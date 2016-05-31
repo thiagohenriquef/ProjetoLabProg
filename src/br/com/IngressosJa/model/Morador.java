@@ -16,6 +16,10 @@ public class Morador extends Pessoa {
     */
     private boolean gerente;
 
+    public Morador() {
+    }
+    
+    
     public boolean isGerente() {
         return this.gerente;
     }

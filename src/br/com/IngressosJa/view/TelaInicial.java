@@ -5,6 +5,8 @@
  */
 package br.com.IngressosJa.view;
 
+//import br.com.IngressosJa.persistencia.Conexao;
+
 /**
  *
  * @author diogo
@@ -15,6 +17,7 @@ public class TelaInicial extends javax.swing.JFrame {
      * Creates new form TelaInicial
      */
     public TelaInicial() {
+        //Conexao con = new Conexao();
         initComponents();
     }
 
