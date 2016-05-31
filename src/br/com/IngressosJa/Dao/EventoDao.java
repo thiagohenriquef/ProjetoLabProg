@@ -3,10 +3,6 @@ package br.com.IngressosJa.Dao;
 import br.com.IngressosJa.model.Evento;
 import br.com.IngressosJa.persistencia.Conexao;
 import com.mysql.jdbc.Statement;
-/**
- *
- * @author thiago
- */
 
 public class EventoDao {
     public static boolean persistir(Evento eve) throws Exception{
