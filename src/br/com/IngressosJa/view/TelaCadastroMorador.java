@@ -5,6 +5,13 @@
  */
 package br.com.IngressosJa.view;
 
+import br.com.IngressosJa.controller.MoradorController;
+import br.com.IngressosJa.model.Morador;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author diogo
@@ -65,8 +72,18 @@ public class TelaCadastroMorador extends javax.swing.JFrame {
         jLabel8.setText("Codigo:");
 
         jCadastrarMoradorButton.setText("Cadastrar");
+        jCadastrarMoradorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCadastrarMoradorButtonActionPerformed(evt);
+            }
+        });
 
         jSairMoradorButton.setText("Sair");
+        jSairMoradorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSairMoradorButtonActionPerformed(evt);
+            }
+        });
 
         jCadastroEnderecoM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,6 +181,27 @@ public class TelaCadastroMorador extends javax.swing.JFrame {
     private void jCadastroEnderecoMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastroEnderecoMActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCadastroEnderecoMActionPerformed
+
+    private void jCadastrarMoradorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarMoradorButtonActionPerformed
+       try {
+            Morador morador = new Morador();
+            morador.setNome(jCadastroNomeM.getText());
+            morador.setCpf(jCadastroCPFM.getText());
+            morador.setEndereco(jCadastroEnderecoM.getText());
+            
+            if (MoradorController.persistir(morador)==true) {
+                JOptionPane.showMessageDialog(this,"Cliente gravado com Sucesso");
+                dispose();
+            }
+           
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCadastroMorador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jCadastrarMoradorButtonActionPerformed
+
+    private void jSairMoradorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairMoradorButtonActionPerformed
+        dispose();
+    }//GEN-LAST:event_jSairMoradorButtonActionPerformed
 
     /**
      * @param args the command line arguments
