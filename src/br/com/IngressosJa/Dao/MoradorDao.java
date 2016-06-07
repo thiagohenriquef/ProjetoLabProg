@@ -17,24 +17,25 @@ public class MoradorDao {
     
     public static boolean persistir(Morador morador) throws Exception{
        
-        try{
+       try{
+            String query = "insert into Morador(cpf,email,login,nome,senha,telefone,gerente)"+
+                    "values('"
+                    +morador.getCpf()+"', '"
+                    +morador.getEmail()+"', '"
+                    +morador.getLogin()+"', '"
+                    +morador.getNome()+"', '"
+                    +morador.getSenha()+"','"
+                    +morador.getTelefone()+"','"
+                    +morador.getGerente()+"');";
+            
             Conexao conect = new Conexao();
             Statement st = conect.getSt();
-            st.execute("insert into morador ( PARAMETROS DO BANCO )"+
-                    "values('"
-                    +morador.getNome()+"', '"
-                    +morador.getCpf()+"', '"
-                    +morador.getEndereco()+"', '"
-                    +morador.getLogin()+"');");
-            
+            st.execute(query);
+            return true;
         }catch(Exception e){
-            
-            System.out.println("Ocorreu algum problema");
+            System.err.println("Ocorreu algum problema");
             e.printStackTrace();
             throw new Exception("Erro ao salvar os Dados!");
-        }
-        return false;
-    
-    
+        }    
     }
 }

@@ -15,6 +15,8 @@ public abstract class Pessoa {
     private String login;
     private String senha;
     private String endereco;
+    private String email;
+    private long telefone;
 
     
     public String getNome() {
@@ -64,5 +66,21 @@ public abstract class Pessoa {
     
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+    
+     public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public long getTelefone() {
+        return this.telefone;
+    }
+
+    public void setTelefone(long telefone) {
+        this.telefone = telefone;
     }
 }
