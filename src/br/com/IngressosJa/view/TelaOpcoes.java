@@ -5,6 +5,8 @@
  */
 package br.com.IngressosJa.view;
 
+import br.com.IngressosJa.controller.MoradorController;
+
 /**
  *
  * @author diogo
@@ -36,19 +38,19 @@ public class TelaOpcoes extends javax.swing.JFrame {
         jRelatorioEvenOpcoes = new javax.swing.JButton();
         jRelatorioCadOpcoes = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuArquivo = new javax.swing.JMenu();
+        jMenuItemSair = new javax.swing.JMenuItem();
+        jMenuRelatorios = new javax.swing.JMenu();
+        jMenuItemRelEventos = new javax.swing.JMenuItem();
+        jMenuItemRelCadastros = new javax.swing.JMenuItem();
+        jMenuComprar = new javax.swing.JMenu();
+        jMenuItemComprarIngressos = new javax.swing.JMenuItem();
+        jMenuCadastrar = new javax.swing.JMenu();
+        jMenuItemCadMorador = new javax.swing.JMenuItem();
+        jMenuItemCadVisitante = new javax.swing.JMenuItem();
+        jMenuItemCadEvento = new javax.swing.JMenuItem();
+        jMenuAjuda = new javax.swing.JMenu();
+        jMenuItemSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +59,11 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
         jSairOpcoesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Cancel Red Button.png"))); // NOI18N
         jSairOpcoesButton.setText("Sair");
+        jSairOpcoesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSairOpcoesButtonActionPerformed(evt);
+            }
+        });
 
         jComprarIngOpcoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/shopping.png"))); // NOI18N
         jComprarIngOpcoes.setText("Comprar Ingressos");
@@ -68,6 +75,11 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
         jCadastroMorOpcoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/User.png"))); // NOI18N
         jCadastroMorOpcoes.setText("Cadastrar Morador");
+        jCadastroMorOpcoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCadastroMorOpcoesActionPerformed(evt);
+            }
+        });
 
         jCadastroVisOpcoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Users.png"))); // NOI18N
         jCadastroVisOpcoes.setText("Cadastrar Visitante");
@@ -79,6 +91,11 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
         jCadastrarEvenOpcoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/calendario.png"))); // NOI18N
         jCadastrarEvenOpcoes.setText("Cadastrar Evento");
+        jCadastrarEvenOpcoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCadastrarEvenOpcoesActionPerformed(evt);
+            }
+        });
 
         jRelatorioEvenOpcoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/relatorioPdf.png"))); // NOI18N
         jRelatorioEvenOpcoes.setText("Relatório de Eventos");
@@ -90,97 +107,112 @@ public class TelaOpcoes extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jRelatorioEvenOpcoes, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jCadastroVisOpcoes)
-                                .addGap(33, 33, 33)
-                                .addComponent(jComprarIngOpcoes))
-                            .addComponent(jCadastroMorOpcoes))
-                        .addContainerGap(201, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jCadastrarEvenOpcoes, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jSairOpcoesButton)
-                                .addGap(35, 35, 35))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jRelatorioCadOpcoes)
-                                .addContainerGap())))))
+                        .addComponent(jSairOpcoesButton)
+                        .addGap(35, 35, 35))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCadastroVisOpcoes)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jCadastroMorOpcoes)
+                                .addGap(32, 32, 32)
+                                .addComponent(jComprarIngOpcoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jCadastrarEvenOpcoes, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jRelatorioEvenOpcoes, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(209, 209, 209)
+                                .addComponent(jRelatorioCadOpcoes)))
+                        .addContainerGap(186, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jCadastroMorOpcoes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jRelatorioEvenOpcoes)
-                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCadastroMorOpcoes)
+                    .addComponent(jComprarIngOpcoes))
+                .addGap(83, 83, 83)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCadastroVisOpcoes)
-                    .addComponent(jComprarIngOpcoes))
-                .addGap(30, 30, 30)
-                .addComponent(jRelatorioCadOpcoes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jCadastrarEvenOpcoes)
+                    .addComponent(jRelatorioCadOpcoes))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCadastrarEvenOpcoes)
+                    .addComponent(jRelatorioEvenOpcoes))
                 .addGap(19, 19, 19)
                 .addComponent(jSairOpcoesButton)
                 .addGap(22, 22, 22))
         );
 
-        jMenu1.setText("Arquivo");
+        jMenuArquivo.setText("Arquivo");
 
-        jMenuItem8.setText("Sair");
-        jMenu1.add(jMenuItem8);
+        jMenuItemSair.setText("Sair");
+        jMenuArquivo.add(jMenuItemSair);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenuArquivo);
 
-        jMenu2.setText("Relatórios");
+        jMenuRelatorios.setText("Relatórios");
 
-        jMenuItem1.setText("Relatórios de Eventos");
-        jMenu2.add(jMenuItem1);
+        jMenuItemRelEventos.setText("Relatórios de Eventos");
+        jMenuRelatorios.add(jMenuItemRelEventos);
 
-        jMenuItem2.setText("Relatórios de Cadastros");
-        jMenu2.add(jMenuItem2);
+        jMenuItemRelCadastros.setText("Relatórios de Cadastros");
+        jMenuRelatorios.add(jMenuItemRelCadastros);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenuRelatorios);
 
-        jMenu3.setText("Comprar");
+        jMenuComprar.setText("Comprar");
 
-        jMenuItem3.setText("Comprar Ingressos");
-        jMenu3.add(jMenuItem3);
+        jMenuItemComprarIngressos.setText("Comprar Ingressos");
+        jMenuItemComprarIngressos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemComprarIngressosActionPerformed(evt);
+            }
+        });
+        jMenuComprar.add(jMenuItemComprarIngressos);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMenuComprar);
 
-        jMenu5.setText("Cadastrar");
+        jMenuCadastrar.setText("Cadastrar");
 
-        jMenuItem4.setText("Cadastrar Morador");
-        jMenu5.add(jMenuItem4);
+        jMenuItemCadMorador.setText("Cadastrar Morador");
+        jMenuItemCadMorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCadMoradorActionPerformed(evt);
+            }
+        });
+        jMenuCadastrar.add(jMenuItemCadMorador);
 
-        jMenuItem5.setText("Cadastrar Visitante");
-        jMenu5.add(jMenuItem5);
+        jMenuItemCadVisitante.setText("Cadastrar Visitante");
+        jMenuItemCadVisitante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCadVisitanteActionPerformed(evt);
+            }
+        });
+        jMenuCadastrar.add(jMenuItemCadVisitante);
 
-        jMenuItem6.setText("Cadastrar Evento");
-        jMenu5.add(jMenuItem6);
+        jMenuItemCadEvento.setText("Cadastrar Evento");
+        jMenuItemCadEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCadEventoActionPerformed(evt);
+            }
+        });
+        jMenuCadastrar.add(jMenuItemCadEvento);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar1.add(jMenuCadastrar);
 
-        jMenu4.setText("Ajuda");
+        jMenuAjuda.setText("Ajuda");
 
-        jMenuItem7.setText("Sobre");
-        jMenu4.add(jMenuItem7);
+        jMenuItemSobre.setText("Sobre");
+        jMenuAjuda.add(jMenuItemSobre);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(jMenuAjuda);
 
         setJMenuBar(jMenuBar1);
 
@@ -199,12 +231,63 @@ public class TelaOpcoes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComprarIngOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComprarIngOpcoesActionPerformed
-        // TODO add your handling code here:
+        TelaCompraIngressos t7 = new TelaCompraIngressos();
+        t7.setVisible(true);
+        
     }//GEN-LAST:event_jComprarIngOpcoesActionPerformed
 
     private void jCadastroVisOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastroVisOpcoesActionPerformed
-        // TODO add your handling code here:
+        TelaCadastroVisitante t4 = new TelaCadastroVisitante();
+        t4.setVisible(true);
+        
     }//GEN-LAST:event_jCadastroVisOpcoesActionPerformed
+
+    private void jCadastroMorOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastroMorOpcoesActionPerformed
+        TelaCadastroMorador t3 = new TelaCadastroMorador();
+        t3.setVisible(true);
+    }//GEN-LAST:event_jCadastroMorOpcoesActionPerformed
+
+    private void jCadastrarEvenOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarEvenOpcoesActionPerformed
+        TelaCadastroEvento t5 = new TelaCadastroEvento();
+        t5.setVisible(true);
+        /**
+         * fazer um select pegando o byte se é ou nao gerente, para poder abrir a tela de cadastro de evento
+         */
+        //if(MoradorController.gerente( 8888  ,morador) == 1){
+        //   
+        //}
+        
+    }//GEN-LAST:event_jCadastrarEvenOpcoesActionPerformed
+
+    private void jSairOpcoesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairOpcoesButtonActionPerformed
+        dispose();
+    }//GEN-LAST:event_jSairOpcoesButtonActionPerformed
+
+    private void jMenuItemComprarIngressosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemComprarIngressosActionPerformed
+        TelaCompraIngressos t7 = new TelaCompraIngressos();
+        t7.setVisible(true);
+    }//GEN-LAST:event_jMenuItemComprarIngressosActionPerformed
+
+    private void jMenuItemCadMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadMoradorActionPerformed
+        TelaCadastroMorador t3 = new TelaCadastroMorador();
+        t3.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCadMoradorActionPerformed
+
+    private void jMenuItemCadVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadVisitanteActionPerformed
+        TelaCadastroVisitante t4 = new TelaCadastroVisitante();
+        t4.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCadVisitanteActionPerformed
+
+    private void jMenuItemCadEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadEventoActionPerformed
+        TelaCadastroEvento t5 = new TelaCadastroEvento();
+        t5.setVisible(true);
+        /**
+         * fazer um select pegando o byte se é ou nao gerente, para poder abrir a tela de cadastro de evento
+         */
+        //if(MoradorController.gerente( 8888  ,morador) == 1){
+        //   
+        //}
+    }//GEN-LAST:event_jMenuItemCadEventoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,20 +329,20 @@ public class TelaOpcoes extends javax.swing.JFrame {
     private javax.swing.JButton jCadastroMorOpcoes;
     private javax.swing.JButton jCadastroVisOpcoes;
     private javax.swing.JButton jComprarIngOpcoes;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenuAjuda;
+    private javax.swing.JMenu jMenuArquivo;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenu jMenuCadastrar;
+    private javax.swing.JMenu jMenuComprar;
+    private javax.swing.JMenuItem jMenuItemCadEvento;
+    private javax.swing.JMenuItem jMenuItemCadMorador;
+    private javax.swing.JMenuItem jMenuItemCadVisitante;
+    private javax.swing.JMenuItem jMenuItemComprarIngressos;
+    private javax.swing.JMenuItem jMenuItemRelCadastros;
+    private javax.swing.JMenuItem jMenuItemRelEventos;
+    private javax.swing.JMenuItem jMenuItemSair;
+    private javax.swing.JMenuItem jMenuItemSobre;
+    private javax.swing.JMenu jMenuRelatorios;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jRelatorioCadOpcoes;
     private javax.swing.JButton jRelatorioEvenOpcoes;

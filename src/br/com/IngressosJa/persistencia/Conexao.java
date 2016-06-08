@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 public class Conexao {
     private com.mysql.jdbc.Connection con;
     private Statement st;
-    private String url = "jdbc:mysql://localhost:3306/projetosin143";
+    private String url = "jdbc:mysql://localhost:3306/dbevento";
     private String user = "root";
     private String pass = "";
     
