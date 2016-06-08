@@ -286,13 +286,13 @@ public class TelaCadastroVisitante extends javax.swing.JFrame {
             visitante.setSenha(String.valueOf(jCadastroSenhaV.getPassword()));
             visitante.setCpfDoMorador(jCadastroCpfMorV.getText());
             
-            if (VisitanteController.persistir(visitante)==true) {
-                JOptionPane.showMessageDialog(this,"Visitante gravado com Sucesso");
+            if(VisitanteController.persistir(visitante)==true){
+                JOptionPane.showMessageDialog(this, "Visitante cadastrado com sucesso");
                 dispose();
             }
-           
-        } catch (Exception ex) {
-            Logger.getLogger(TelaCadastroMorador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro!!\nPor favor, verifique o CPF do morador que foi informado");
         }
         
         

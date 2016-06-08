@@ -12,9 +12,9 @@ import javax.swing.JOptionPane;
 public class Conexao {
     private com.mysql.jdbc.Connection con;
     private Statement st;
-    private String url = "jdbc:mysql://localhost:3306/dbevento";
+    private String url = "jdbc:mysql://localhost:3306/dbevento?autoReconnect=true&useSSL=false";
     private String user = "root";
-    private String pass = "";
+    private String pass = "123456";
     
     public Conexao(){
         try {
@@ -22,7 +22,7 @@ public class Conexao {
             Class.forName("com.mysql.jdbc.Driver");
             this.con = (com.mysql.jdbc.Connection) DriverManager.getConnection(this.url, this.user, this.pass);
             this.st = (Statement) this.con.createStatement();
-              JOptionPane.showMessageDialog(null," Dados Gravado com Sucesso!");
+              //JOptionPane.showMessageDialog(null," Dados Gravado com Sucesso!");
         } catch (Exception e) {
             // Mostrando mensagem ao usuario caso a listagem apresente algum erro ...
             JOptionPane.showMessageDialog(null, e.getMessage());

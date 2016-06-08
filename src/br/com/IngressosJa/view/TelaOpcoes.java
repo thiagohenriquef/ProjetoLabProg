@@ -261,6 +261,9 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
     private void jSairOpcoesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairOpcoesButtonActionPerformed
         dispose();
+        TelaInicial ti = new TelaInicial();
+        ti.setVisible(true);
+        
     }//GEN-LAST:event_jSairOpcoesButtonActionPerformed
 
     private void jMenuItemComprarIngressosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemComprarIngressosActionPerformed

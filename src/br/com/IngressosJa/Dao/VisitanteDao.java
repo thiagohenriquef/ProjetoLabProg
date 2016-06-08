@@ -1,26 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.IngressosJa.Dao;
 
 import br.com.IngressosJa.model.Visitante;
 import br.com.IngressosJa.persistencia.Conexao;
 import com.mysql.jdbc.Statement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author diogo
+ * @author thiago
  */
 public class VisitanteDao {
+    
     public static boolean persistir(Visitante visitante) throws Exception{
-       
-       try{
-            String query = "insert into visitante(cpf,email,login,nome,senha,endereco,bairro,cidade,Morador_cpf,telefone)"+
+        try{
+            String query = "insert into Visitante(cpf,login,nome,senha,endereco,bairro,cidade,Morador_cpf,email,telefone)"+
                     "values('"
                     +visitante.getCpf()+"', '"
-                    +visitante.getEmail()+"', '"
                     +visitante.getLogin()+"', '"
                     +visitante.getNome()+"', '"
                     +visitante.getSenha()+"','"
@@ -28,16 +24,17 @@ public class VisitanteDao {
                     +visitante.getBairro()+"','"
                     +visitante.getCidade()+"','"
                     +visitante.getCpfDoMorador()+"','"
+                    +visitante.getEmail()+"','"
                     +visitante.getTelefone()+"');";
             
             Conexao conect = new Conexao();
             Statement st = conect.getSt();
             st.execute(query);
             return true;
-        }catch(Exception e){
-            System.err.println("Ocorreu algum problema");
-            e.printStackTrace();
-            throw new Exception("Erro ao salvar os Dados!");
-        }    
+        }
+        catch(SQLException e){
+            throw new Exception(e);
+        }
     }
+    
 }
