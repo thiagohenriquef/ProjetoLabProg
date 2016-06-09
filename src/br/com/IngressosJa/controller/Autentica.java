@@ -2,6 +2,7 @@ package br.com.IngressosJa.controller;
 
 import br.com.IngressosJa.Dao.AutenticaDao;
 import br.com.IngressosJa.model.Morador;
+import br.com.IngressosJa.model.Pessoa;
 import br.com.IngressosJa.model.Visitante;
 import br.com.IngressosJa.view.TelaInicial;
 import java.sql.ResultSet;
@@ -14,18 +15,51 @@ import javax.swing.WindowConstants;
  * @author thiago
  */
 public class Autentica {
-    static Visitante visitante = new Visitante();
-    static Morador morador;
+    TelaInicial tel;
+    AutenticaDao autD = new AutenticaDao(this);
+    private Visitante vis;
+    private Morador mor;
     
-    
-    public static boolean autentica(String login, String password) throws Exception{
-        return AutenticaDao.consultarUsuario(login, password);
+    public Autentica() {
     }
     
-    public static void salvaVisitante(ResultSet rs) throws SQLException{
-       morador.setNome(rs.getString("nome"));
-       
+    public Autentica(TelaInicial tel) {
+        this.tel = tel;
+    }
+    
+    public boolean autentica(String login, String password) throws Exception{
+        return autD.consultarUsuario(login, password);
     }
 
+    public Visitante getVis() {
+        return vis;
+    }
+
+    public void setVis(Visitante vis) {
+        this.vis = vis;
+    }
     
+
+    public Morador getMor() {
+        return mor;
+    }
+
+    public void setMor(Morador mor) {
+        this.mor = mor;
+    }
+    
+    
+    public void instanciaUsuario(String cpf, String nome, String gerente) {
+        if(gerente.equals("-1")){
+            //Visitante vis = new Visitante(nome, cpf);
+            //System.err.println("voltou na autentica");
+            getVis().setNome(nome);
+            getVis().setCpf(cpf);
+        }else{
+            //Morador mor = new Morador(nome, cpf, Byte.valueOf(gerente));
+            getMor().setNome(nome);
+            getMor().setCpf(cpf);
+            getMor().setGerente(Byte.valueOf(gerente));
+        }
+    }    
 }

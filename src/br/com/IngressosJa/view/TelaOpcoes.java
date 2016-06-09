@@ -5,14 +5,17 @@
  */
 package br.com.IngressosJa.view;
 
+import br.com.IngressosJa.controller.Autentica;
 import br.com.IngressosJa.controller.MoradorController;
+import br.com.IngressosJa.model.Visitante;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author diogo
  */
 public class TelaOpcoes extends javax.swing.JFrame {
-
+    Autentica aut = new Autentica();
     /**
      * Creates new form TelaOpcoes
      */
@@ -325,6 +328,10 @@ public class TelaOpcoes extends javax.swing.JFrame {
                 new TelaOpcoes().setVisible(true);
             }
         });
+    }
+    
+    public void saudacoesUsuario(Visitante vis){
+        JOptionPane.showMessageDialog(this, "Seja bem-vindo visitante "+aut.getVis().getNome()+"!");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

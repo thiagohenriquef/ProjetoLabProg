@@ -5,6 +5,11 @@
  */
 package br.com.IngressosJa.view;
 
+import br.com.IngressosJa.controller.EventoController;
+import br.com.IngressosJa.model.Evento;
+import br.com.IngressosJa.model.Ingresso;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author diogo
@@ -92,6 +97,11 @@ public class TelaCadastroEvento extends javax.swing.JFrame {
 
         jCadastrarEventoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Clear Green Button.png"))); // NOI18N
         jCadastrarEventoButton.setText("Cadastrar");
+        jCadastrarEventoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCadastrarEventoButtonActionPerformed(evt);
+            }
+        });
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/calendar256.png"))); // NOI18N
 
@@ -110,7 +120,7 @@ public class TelaCadastroEvento extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
                                 .addComponent(jCadastroEveLocal, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
@@ -129,7 +139,7 @@ public class TelaCadastroEvento extends javax.swing.JFrame {
                                     .addComponent(jCadastroEvePreMorador))))
                         .addGap(100, 100, 100)
                         .addComponent(jLabel8)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jCadastrarEventoButton)
@@ -178,7 +188,7 @@ public class TelaCadastroEvento extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jSairCadEventoButton)
                     .addComponent(jCadastrarEventoButton))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jMenuArquivo.setText("Arquivo");
@@ -231,6 +241,30 @@ public class TelaCadastroEvento extends javax.swing.JFrame {
     private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
         dispose();
     }//GEN-LAST:event_jMenuItemSairActionPerformed
+
+    private void jCadastrarEventoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarEventoButtonActionPerformed
+        // TODO add your handling code here:
+        Evento evento = new Evento();
+        //Ingresso ingresso = new Ingresso();
+        evento.setNomeEvento(jCadastroEveNome.getText());
+        evento.setLocalEvento(jCadastroEveLocal.getText());
+        evento.setDataEvento(jCadastroEveData.getText());
+        evento.setIngressos(new Ingresso(Integer.parseInt(jCadastroEvePreMorador.getText()),
+                                        Integer.parseInt(jCadastroEvePreVisitante.getText()),
+                                        Integer.parseInt(jCadastroEveQuantidadeIng.getText()),
+                                        Integer.parseInt(jCadastroEveQuantidadeIng.getText())));
+        
+        
+        try{
+            if(EventoController.persistirEvento(evento)){
+                JOptionPane.showMessageDialog(this, "Evento criado com Sucesso");
+            }
+        }
+        catch(Exception e){
+            System.out.println("Ocorreu um erro na inserção"+e);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jCadastrarEventoButtonActionPerformed
 
     /**
      * @param args the command line arguments

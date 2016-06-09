@@ -16,9 +16,16 @@ public class Morador extends Pessoa {
         Somente saberá se é morador ou nao, se caso na tela do cliente acertar o codigo, 1234.
     */
     private byte gerente;
+       
 
     public Morador() {
         this.setCodigo(codigo);
+    }
+    
+    public Morador(String nome, String cpf, byte gerente) {
+        super.setNome(nome);
+        super.setCpf(cpf);
+        this.gerente = gerente;
     }
 
     public byte getGerente() {

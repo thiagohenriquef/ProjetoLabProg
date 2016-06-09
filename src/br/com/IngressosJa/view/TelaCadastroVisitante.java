@@ -280,6 +280,8 @@ public class TelaCadastroVisitante extends javax.swing.JFrame {
             visitante.setNome(jCadastroNomeV.getText());
             visitante.setCpf(jCadastroCpfV.getText());
             visitante.setEndereco(jCadastroEnderecoV.getText());
+            visitante.setBairro(jCadastroBairroV.getText());
+            visitante.setCidade(jCadastroCidadeV.getText());
             visitante.setEmail(jCadastroEmailV.getText());
             visitante.setTelefone(Integer.parseInt(jCadastroTeleV.getText()));
             visitante.setLogin(jCadastroLoginV.getText());

@@ -12,6 +12,9 @@ public class Evento {
         this.nomeEvento = nomeEvento;
         this.dataEvento = dataEvento;
     }
+
+    public Evento() {
+    }
     
     
     public Ingresso getIngressos() {

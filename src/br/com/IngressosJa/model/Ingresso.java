@@ -15,6 +15,18 @@ public class Ingresso {
     private int precoVis;
     private int quantidadeDeIngresso;
     private int qntIngressosVen;
+
+    public Ingresso(int precoMor, int precoVis, int quantidadeDeIngresso, int qntIngressosVen) {
+        this.precoMor = precoMor;
+        this.precoVis = precoVis;
+        this.quantidadeDeIngresso = quantidadeDeIngresso;
+        this.qntIngressosVen = qntIngressosVen;
+    }
+
+    public Ingresso() {
+    }
+    
+    
     
     public int getQntIngressosVen() {
         return this.qntIngressosVen;

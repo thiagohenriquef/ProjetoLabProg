@@ -1,6 +1,7 @@
 package br.com.IngressosJa.Dao;
 
 import br.com.IngressosJa.controller.Autentica;
+import br.com.IngressosJa.model.Visitante;
 import br.com.IngressosJa.persistencia.Conexao;
 import com.mysql.jdbc.Statement;
 import java.sql.*;
@@ -11,25 +12,31 @@ import javax.swing.JOptionPane;
  * @author thiago
  */
 public class AutenticaDao {
+    Autentica aut;
+
+    public AutenticaDao(Autentica aut) {
+        this.aut = aut;
+    }
+
+    public AutenticaDao() {
+        
+    }
     
-    public static boolean consultarUsuario(String login, String password) throws Exception{
-        try{
-            int a = 0, b=1;
-            String query = "select * from Visitante where cpf="+login+" and senha='"+password+"';";
-            String query2 = "select * from Morador where cpf="+login+" and senha='"+password+"';";
-            Conexao conect = new Conexao();
-            Statement st = conect.getSt();
+    public boolean consultarUsuario(String login, String password) throws Exception{
+        try{           
+            String query = "select cpf, senha, nome, gerente from Morador\n" +
+                    "union all \n" +
+                    "select cpf, senha, nome, '-1' as gerente from Visitante;";
             
-            ResultSet visitanteRes = st.executeQuery(query);
-            if(checaTabelas(visitanteRes, login, password)){ 
-                Autentica.salvaVisitante(visitanteRes);
-                return true;}    
-            visitanteRes.close();
+            Conexao connect = new Conexao();
+            Statement st = connect.getSt();
+            ResultSet rs = st.executeQuery(query);
             
-            ResultSet moradorRes = st.executeQuery(query2);
-            if(checaTabelas(moradorRes, login, password)) return true;
-            moradorRes.close();
-                
+            if(checaTabelas(rs, login, password)){
+                return true;
+            }
+            rs.close();
+            
         }
         catch(Exception e){
             throw new Exception("Erro no Banco de Dados "+e);
@@ -38,15 +45,18 @@ public class AutenticaDao {
         return false;
     }
     
-    public static boolean checaTabelas(ResultSet rs, String login, String password) throws Exception{
+    public boolean checaTabelas(ResultSet rs, String login, String password) throws Exception{
         try{
             while(rs.next()){
                 String cpfBD = rs.getString("cpf");
                 String senhaBD = rs.getString("senha");
                 String nomeBD = rs.getString("nome");
+                String gerenteBD = checaGerente(rs.getString("gerente")); 
                 
                 if(login.equals(cpfBD) && password.equals(senhaBD)){
-                    //JOptionPane.showMessageDialog(this, nomeBD);
+                    //Autentica aute = new Autentica();
+                    //aute.instanciaUsuario(cpfBD, nomeBD, gerenteBD);
+                    JOptionPane.showMessageDialog(null, "Seja bem-vindo "+nomeBD+"\n"+senhaBD+"\n"+cpfBD+"\n"+gerenteBD+"!");
                     return true;
                 }
             }
@@ -55,5 +65,21 @@ public class AutenticaDao {
             throw new Exception(e);
         }
         return false;
+    }
+    
+    
+    public String checaGerente(String x){
+        try{
+            if(x.equals("1")){
+                return "1";
+            }else if(x.equals("0")){
+                return "0";
+            }
+        }catch(Exception e){
+            //e.printStackTrace();
+            return "-1";
+        }
+        
+        return null;
     }
 }

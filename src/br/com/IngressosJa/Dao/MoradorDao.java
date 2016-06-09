@@ -32,6 +32,7 @@ public class MoradorDao {
             Statement st = conect.getSt();
             st.execute(query);
             return true;
+            
         }catch(Exception e){
             System.err.println("Ocorreu algum problema");
             e.printStackTrace();

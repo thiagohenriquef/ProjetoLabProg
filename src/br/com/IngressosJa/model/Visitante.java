@@ -14,6 +14,14 @@ public class Visitante extends Pessoa{
     private String bairro;
     private String cpfDoMorador;
 
+    public Visitante() {
+    }
+    
+
+    public Visitante(String nome, String cpf) {
+        super.setNome(nome);
+        super.setCpf(cpf);
+    }
     
     public String getCidade() {
         return this.cidade;
