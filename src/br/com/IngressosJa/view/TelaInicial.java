@@ -255,7 +255,6 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             System.err.println("erro na tela inicial"+ex);
-            ex.printStackTrace();
         } 
     }//GEN-LAST:event_jLoginButtonActionPerformed
 

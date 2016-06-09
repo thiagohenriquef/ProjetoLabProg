@@ -174,6 +174,7 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
 
     private void jNomeEventoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNomeEventoComboBoxActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jNomeEventoComboBoxActionPerformed
 
     /**
