@@ -242,6 +242,7 @@ public class TelaInicial extends javax.swing.JFrame {
         try {
             if(aut.autentica(user, password)){
                 TelaOpcoes to = new TelaOpcoes();
+                System.out.println("blbabla");
 
                 //System.out.println("Bem vindo "+"\n"+Autentica.getVis().getCpf());
                 //to.JNomeDoUsuario.setText("Bem vindo: CPF "+user);
