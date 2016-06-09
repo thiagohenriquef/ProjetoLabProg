@@ -7,6 +7,13 @@ package br.com.IngressosJa.view;
 
 //import br.com.IngressosJa.persistencia.Conexao;
 
+import br.com.IngressosJa.controller.Autentica;
+import br.com.IngressosJa.model.Visitante;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author diogo
@@ -213,8 +220,8 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jSairMenuItemActionPerformed
 
     private void jSairPrincipalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairPrincipalButtonActionPerformed
-        //System.exit(0);
-        dispose();
+        JOptionPane.showMessageDialog(this, "Obrigado por usar o nosso sistema!");
+        System.exit(0);
     }//GEN-LAST:event_jSairPrincipalButtonActionPerformed
 
     private void jCadastroMoradorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastroMoradorButtonActionPerformed
@@ -229,8 +236,29 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordLoginActionPerformed
 
     private void jLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButtonActionPerformed
-        TelaOpcoes t2 = new TelaOpcoes();
-        t2.setVisible(true);   
+        String user = jUserLogin.getText();
+        String password = String.valueOf(jPasswordLogin.getPassword());
+        
+        Autentica aut = new Autentica(this);
+        
+        try {
+            if(aut.autentica(user, password)){
+                TelaOpcoes to = new TelaOpcoes();
+
+                //System.out.println("Bem vindo "+"\n"+Autentica.getVis().getCpf());
+                //to.JNomeDoUsuario.setText("Bem vindo: CPF "+user);
+                
+                dispose();
+                to.setVisible(true);
+                
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Usuário não existente no sistema");
+            }
+        } catch (Exception ex) {
+            System.err.println("erro na tela inicial"+ex);
+            ex.printStackTrace();
+        } 
     }//GEN-LAST:event_jLoginButtonActionPerformed
 
     private void jCadastroVisitanteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastroVisitanteButtonActionPerformed
