@@ -47,6 +47,11 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 600));
 
         jNomeEventoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jNomeEventoComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jNomeEventoComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Nome do Evento:");
 
@@ -91,7 +96,7 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(264, 264, 264)
                         .addComponent(jLabel3)))
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jFinalizarCompraButton)
@@ -113,7 +118,7 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
                         .addComponent(jNomeEventoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(78, 78, 78)
                         .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 264, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jFinalizarCompraButton)
                     .addComponent(jSairButton))
@@ -166,6 +171,10 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
     private void jSairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairButtonActionPerformed
         dispose();
     }//GEN-LAST:event_jSairButtonActionPerformed
+
+    private void jNomeEventoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNomeEventoComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jNomeEventoComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
