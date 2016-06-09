@@ -5,8 +5,6 @@
  */
 package br.com.IngressosJa.view;
 
-//import br.com.IngressosJa.persistencia.Conexao;
-
 import br.com.IngressosJa.controller.Autentica;
 import br.com.IngressosJa.model.Visitante;
 import java.util.logging.Level;
