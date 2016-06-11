@@ -15,10 +15,11 @@ import javax.swing.WindowConstants;
  * @author thiago
  */
 public class Autentica {
+
     TelaInicial tel;
     AutenticaDao autD = new AutenticaDao(this);
-    private Visitante vis;
-    private Morador mor;
+    private static String morOrVis;
+    private static String nomeUser;
     
     public Autentica() {
     }
@@ -31,35 +32,20 @@ public class Autentica {
         return autD.consultarUsuario(login, password);
     }
 
-    public Visitante getVis() {
-        return vis;
+    public String getMorOrVis() {
+        return morOrVis;
     }
 
-    public void setVis(Visitante vis) {
-        this.vis = vis;
+    public void setMorOrVis(String morOrVis) {
+        this.morOrVis = morOrVis;
     }
     
+    public String getNomeUser() {
+        return nomeUser;
+    }
 
-    public Morador getMor() {
-        return mor;
-    }
-
-    public void setMor(Morador mor) {
-        this.mor = mor;
+    public void setNomeUser(String aNomeUser) {
+        nomeUser = aNomeUser;
     }
     
-    
-    public void instanciaUsuario(String cpf, String nome, String gerente) {
-        if(gerente.equals("-1")){
-            //Visitante vis = new Visitante(nome, cpf);
-            //System.err.println("voltou na autentica");
-            getVis().setNome(nome);
-            getVis().setCpf(cpf);
-        }else{
-            //Morador mor = new Morador(nome, cpf, Byte.valueOf(gerente));
-            getMor().setNome(nome);
-            getMor().setCpf(cpf);
-            getMor().setGerente(Byte.valueOf(gerente));
-        }
-    }    
 }

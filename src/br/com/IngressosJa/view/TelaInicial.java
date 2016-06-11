@@ -236,17 +236,11 @@ public class TelaInicial extends javax.swing.JFrame {
     private void jLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jLoginButtonActionPerformed
         String user = jUserLogin.getText();
         String password = String.valueOf(jPasswordLogin.getPassword());
-        
         Autentica aut = new Autentica(this);
         
         try {
             if(aut.autentica(user, password)){
                 TelaOpcoes to = new TelaOpcoes();
-                System.out.println("blbabla");
-
-                //System.out.println("Bem vindo "+"\n"+Autentica.getVis().getCpf());
-                //to.JNomeDoUsuario.setText("Bem vindo: CPF "+user);
-                
                 dispose();
                 to.setVisible(true);
                 

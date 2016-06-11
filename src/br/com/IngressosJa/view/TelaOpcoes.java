@@ -251,8 +251,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
     }//GEN-LAST:event_jCadastroMorOpcoesActionPerformed
 
     private void jCadastrarEvenOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastrarEvenOpcoesActionPerformed
-        TelaCadastroEvento t5 = new TelaCadastroEvento();
-        t5.setVisible(true);
+        this.checaUsuarioGerente();
         /**
          * fazer um select pegando o byte se é ou nao gerente, para poder abrir a tela de cadastro de evento
          */
@@ -285,8 +284,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemCadVisitanteActionPerformed
 
     private void jMenuItemCadEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadEventoActionPerformed
-        TelaCadastroEvento t5 = new TelaCadastroEvento();
-        t5.setVisible(true);
+        this.checaUsuarioGerente();
         /**
          * fazer um select pegando o byte se é ou nao gerente, para poder abrir a tela de cadastro de evento
          */
@@ -329,11 +327,16 @@ public class TelaOpcoes extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void saudacoesUsuario(Visitante vis){
-        JOptionPane.showMessageDialog(this, "Seja bem-vindo visitante "+aut.getVis().getNome()+"!");
-    }
 
+    public void checaUsuarioGerente(){
+        if(aut.getMorOrVis().equals("1")){
+            TelaCadastroEvento t5 = new TelaCadastroEvento();
+            t5.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(this, "Você não tem a permissão para cadastrar evento!\n"
+                    + "Esta permissão só é concedida a Moradores que são Gerentes no condomínio.");
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jCadastrarEvenOpcoes;
     private javax.swing.JButton jCadastroMorOpcoes;

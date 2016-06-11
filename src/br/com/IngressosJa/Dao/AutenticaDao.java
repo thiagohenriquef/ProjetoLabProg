@@ -24,9 +24,9 @@ public class AutenticaDao {
     
     public boolean consultarUsuario(String login, String password) throws Exception{
         try{           
-            String query = "select cpf, senha, nome, gerente from Morador\n" +
+            String query = "select login, cpf, senha, nome, gerente from Morador\n" +
                     "union all \n" +
-                    "select cpf, senha, nome, '-1' as gerente from Visitante;";
+                    "select login, cpf, senha, nome, '-1' as gerente from Visitante;";
             
             Conexao connect = new Conexao();
             Statement st = connect.getSt();
@@ -48,15 +48,16 @@ public class AutenticaDao {
     public boolean checaTabelas(ResultSet rs, String login, String password) throws Exception{
         try{
             while(rs.next()){
+                String loginBD = rs.getString("login");
                 String cpfBD = rs.getString("cpf");
                 String senhaBD = rs.getString("senha");
                 String nomeBD = rs.getString("nome");
                 String gerenteBD = checaGerente(rs.getString("gerente")); 
                 
                 if(login.equals(cpfBD) && password.equals(senhaBD)){
-                    //Autentica aute = new Autentica();
-                    //aute.instanciaUsuario(cpfBD, nomeBD, gerenteBD);
-                    JOptionPane.showMessageDialog(null, "Seja bem-vindo "+nomeBD+"\n"+senhaBD+"\n"+cpfBD+"\n"+gerenteBD+"!");
+                    aut.setMorOrVis(gerenteBD);
+                    aut.setNomeUser(nomeBD);
+                    JOptionPane.showMessageDialog(null, "Seja bem-vindo "+nomeBD+"!");
                     return true;
                 }
             }
@@ -66,8 +67,7 @@ public class AutenticaDao {
         }
         return false;
     }
-    
-    
+       
     public String checaGerente(String x){
         try{
             if(x.equals("1")){
@@ -84,4 +84,5 @@ public class AutenticaDao {
         
         return null;
     }
+    
 }

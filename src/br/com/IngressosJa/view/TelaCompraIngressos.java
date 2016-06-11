@@ -5,18 +5,36 @@
  */
 package br.com.IngressosJa.view;
 
+import br.com.IngressosJa.controller.Autentica;
+import br.com.IngressosJa.controller.EventoController;
+import br.com.IngressosJa.model.Evento;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
+
 /**
  *
  * @author diogo
  */
 public class TelaCompraIngressos extends javax.swing.JFrame {
-
+    Autentica aut = new Autentica();
     /**
      * Creates new form TelaCompraIngressos
      */
     public TelaCompraIngressos() {
         initComponents();
-    }
+        this.preencheComboBox();
+        this.jQuantosIngressos.setVisible(false);
+        this.jQntIngressosSpinner.setVisible(false);
+        //this.jPrecoTotal.setVisible(false);
+        //System.out.println(aut.getMorOrVis());
+      
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,14 +45,19 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jDadosEvento = new javax.swing.JPanel();
         jNomeEventoComboBox = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jQuantosIngressos = new javax.swing.JLabel();
         jQntIngressosSpinner = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
         jFinalizarCompraButton = new javax.swing.JButton();
         jSairButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jDataEvento = new javax.swing.JLabel();
+        jQuantidadeDisponivel = new javax.swing.JLabel();
+        jPrecoMor = new javax.swing.JLabel();
+        jPrecoVis = new javax.swing.JLabel();
+        jLocalEvento = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemSair = new javax.swing.JMenuItem();
@@ -43,19 +66,21 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(900, 600));
+        jDadosEvento.setBackground(new java.awt.Color(204, 204, 255));
+        jDadosEvento.setPreferredSize(new java.awt.Dimension(900, 600));
 
-        jNomeEventoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jNomeEventoComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jNomeEventoComboBoxItemStateChanged(evt);
+            }
+        });
         jNomeEventoComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jNomeEventoComboBoxActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Nome do Evento:");
-
-        jLabel2.setText("Quantos Ingressos:");
+        jQuantosIngressos.setText("Quantos Ingressos:");
 
         jQntIngressosSpinner.setPreferredSize(new java.awt.Dimension(100, 22));
 
@@ -78,51 +103,77 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jNomeEventoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jQntIngressosSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(264, 264, 264)
-                        .addComponent(jLabel3)))
-                .addContainerGap(254, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        jLabel4.setText("Escolha o Evento:");
+
+        javax.swing.GroupLayout jDadosEventoLayout = new javax.swing.GroupLayout(jDadosEvento);
+        jDadosEvento.setLayout(jDadosEventoLayout);
+        jDadosEventoLayout.setHorizontalGroup(
+            jDadosEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDadosEventoLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jFinalizarCompraButton)
                 .addGap(77, 77, 77)
                 .addComponent(jSairButton)
                 .addGap(68, 68, 68))
+            .addGroup(jDadosEventoLayout.createSequentialGroup()
+                .addGroup(jDadosEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDadosEventoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jNomeEventoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jDadosEventoLayout.createSequentialGroup()
+                        .addGap(264, 264, 264)
+                        .addComponent(jLabel3))
+                    .addGroup(jDadosEventoLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(jDadosEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jQuantidadeDisponivel)
+                            .addComponent(jDataEvento)
+                            .addComponent(jPrecoMor)
+                            .addComponent(jPrecoVis)
+                            .addComponent(jLocalEvento)))
+                    .addGroup(jDadosEventoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jQuantosIngressos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jQntIngressosSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(254, Short.MAX_VALUE))
+            .addGroup(jDadosEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDadosEventoLayout.createSequentialGroup()
+                    .addGap(22, 22, 22)
+                    .addComponent(jLabel4)
+                    .addContainerGap(774, Short.MAX_VALUE)))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jDadosEventoLayout.setVerticalGroup(
+            jDadosEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDadosEventoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addGap(48, 48, 48)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jQntIngressosSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jNomeEventoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(78, 78, 78)
-                        .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(82, 82, 82)
+                .addComponent(jNomeEventoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jDataEvento)
+                .addGap(18, 18, 18)
+                .addComponent(jQuantidadeDisponivel)
+                .addGap(18, 18, 18)
+                .addComponent(jPrecoMor)
+                .addGap(18, 18, 18)
+                .addComponent(jPrecoVis)
+                .addGap(18, 18, 18)
+                .addComponent(jLocalEvento)
+                .addGap(24, 24, 24)
+                .addGroup(jDadosEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jQuantosIngressos)
+                    .addComponent(jQntIngressosSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
+                .addGroup(jDadosEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jFinalizarCompraButton)
                     .addComponent(jSairButton))
                 .addGap(40, 40, 40))
+            .addGroup(jDadosEventoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jDadosEventoLayout.createSequentialGroup()
+                    .addGap(113, 113, 113)
+                    .addComponent(jLabel4)
+                    .addContainerGap(471, Short.MAX_VALUE)))
         );
 
         jMenu1.setText("Arquivo");
@@ -150,11 +201,11 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jDadosEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jDadosEvento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -165,7 +216,17 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     private void jFinalizarCompraButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFinalizarCompraButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            JOptionPane.showMessageDialog(this, "Preço Total: "+calculaPreco(EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getPrecoMor(),
+                EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getPrecoVis(),
+                this.jQntIngressosSpinner.getValue().toString())+"\n"+aut.getNomeUser()+", seus ingressos foram comprados com sucesso.");
+            
+            if(EventoController.decrementaIngressos(this.jQntIngressosSpinner.getValue().toString(), 
+                    this.jNomeEventoComboBox.getSelectedItem().toString())) dispose();
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCompraIngressos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jFinalizarCompraButtonActionPerformed
 
     private void jSairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairButtonActionPerformed
@@ -173,9 +234,27 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
     }//GEN-LAST:event_jSairButtonActionPerformed
 
     private void jNomeEventoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNomeEventoComboBoxActionPerformed
+        try {
+            this.jDataEvento.setText("Data do evento: \t"+EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getDataEvento());
+            this.jQuantidadeDisponivel.setText("Quantidade: \t"+EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getQuantidadeDeIngresso());
+            this.jPrecoMor.setText("Morador: \t"+EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getPrecoMor());
+            this.jPrecoVis.setText("Visitante: \t"+EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getPrecoVis());
+            this.jLocalEvento.setText("Local: \t"+EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getLocalEvento());
+            this.jQntIngressosSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getQuantidadeDeIngresso(), 1));
+            this.jQuantosIngressos.setVisible(true);
+            this.jQntIngressosSpinner.setVisible(true);
+            //this.jPrecoTotal.setVisible(true);
+            
+        } catch (Exception ex) {
+            Logger.getLogger(TelaCompraIngressos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jNomeEventoComboBoxActionPerformed
+
+    private void jNomeEventoComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jNomeEventoComboBoxItemStateChanged
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jNomeEventoComboBoxActionPerformed
+    }//GEN-LAST:event_jNomeEventoComboBoxItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -186,6 +265,7 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -208,23 +288,51 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaCompraIngressos().setVisible(true);
+                
             }
         });
     }
+    
+    public void preencheComboBox(){
+        try{
+            ArrayList<Evento> eve = new ArrayList<>(EventoController.buscaEventos());
+            eve = EventoController.buscaEventos();
+            for(int i =0; i<eve.size(); i++){
+            this.jNomeEventoComboBox.addItem(eve.get(i).getNomeEvento());
+        }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro na obtenção dos parametros!");
+            dispose();
+            e.printStackTrace();
+        }
+    }
+    
+    public int calculaPreco(int mor, int vis, String quant){
+        if(aut.getMorOrVis().equals("-1")){
+            return vis*Integer.parseInt(quant);
+        }else{
+            return mor*Integer.parseInt(quant);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jDadosEvento;
+    private javax.swing.JLabel jDataEvento;
     private javax.swing.JButton jFinalizarCompraButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLocalEvento;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenuAjuda;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenuItem jMenuItemSobre;
     private javax.swing.JComboBox jNomeEventoComboBox;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jPrecoMor;
+    private javax.swing.JLabel jPrecoVis;
     private javax.swing.JSpinner jQntIngressosSpinner;
+    private javax.swing.JLabel jQuantidadeDisponivel;
+    private javax.swing.JLabel jQuantosIngressos;
     private javax.swing.JButton jSairButton;
     // End of variables declaration//GEN-END:variables
 }
