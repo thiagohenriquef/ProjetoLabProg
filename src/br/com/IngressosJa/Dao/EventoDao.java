@@ -40,13 +40,13 @@ public class EventoDao {
     
     public static boolean persistirEvento(Evento eve) throws Exception{
      try {   
-            String query = "insert into Evento(nomeEvento, localEvento, dataEvento)"
+            String query = "insert into Evento(nomeEvento, localEvento, dataEvento) "
                         +"values('"
                         +eve.getNomeEvento()+"', '"
                         +eve.getLocalEvento()+"','"
                         +eve.getDataEvento()+"');";
             
-            if(insereBD(query)) return true;
+            if(updateBD(query)) return true;
             
          }catch (SQLException ex){
             throw new Exception("Erro no SQL"+ex);
@@ -64,7 +64,7 @@ public class EventoDao {
                     +eve.getIngressos().getPrecoMor()+"', '"
                     +eve.getIngressos().getPrecoVis()+"');";
 
-            if (insereBD(query)) return true;
+            if (updateBD(query)) return true;
          }catch (Exception e) {
             throw new Exception("Erro ao Salvar Dados do Ingresso!");
         }

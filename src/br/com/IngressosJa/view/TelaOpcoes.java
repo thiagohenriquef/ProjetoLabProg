@@ -7,8 +7,12 @@ package br.com.IngressosJa.view;
 
 import br.com.IngressosJa.controller.Autentica;
 import br.com.IngressosJa.controller.MoradorController;
+import br.com.IngressosJa.controller.RelatorioController;
 import br.com.IngressosJa.model.Visitante;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JRException;
 
 /**
  *
@@ -102,9 +106,19 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
         jRelatorioEvenOpcoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/relatorioPdf.png"))); // NOI18N
         jRelatorioEvenOpcoes.setText("Relatório de Eventos");
+        jRelatorioEvenOpcoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRelatorioEvenOpcoesActionPerformed(evt);
+            }
+        });
 
         jRelatorioCadOpcoes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/relatorioPdf.png"))); // NOI18N
         jRelatorioCadOpcoes.setText("Relatório de Cadastro");
+        jRelatorioCadOpcoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRelatorioCadOpcoesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,7 +145,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(209, 209, 209)
                                 .addComponent(jRelatorioCadOpcoes)))
-                        .addContainerGap(186, Short.MAX_VALUE))))
+                        .addContainerGap(196, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +158,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCadastroVisOpcoes)
                     .addComponent(jRelatorioCadOpcoes))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCadastrarEvenOpcoes)
                     .addComponent(jRelatorioEvenOpcoes))
@@ -163,9 +177,19 @@ public class TelaOpcoes extends javax.swing.JFrame {
         jMenuRelatorios.setText("Relatórios");
 
         jMenuItemRelEventos.setText("Relatórios de Eventos");
+        jMenuItemRelEventos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRelEventosActionPerformed(evt);
+            }
+        });
         jMenuRelatorios.add(jMenuItemRelEventos);
 
         jMenuItemRelCadastros.setText("Relatórios de Cadastros");
+        jMenuItemRelCadastros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemRelCadastrosActionPerformed(evt);
+            }
+        });
         jMenuRelatorios.add(jMenuItemRelCadastros);
 
         jMenuBar1.add(jMenuRelatorios);
@@ -293,6 +317,46 @@ public class TelaOpcoes extends javax.swing.JFrame {
         //}
     }//GEN-LAST:event_jMenuItemCadEventoActionPerformed
 
+    private void jRelatorioCadOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRelatorioCadOpcoesActionPerformed
+        // TODO add your handling code here:
+        if(checaUsuarioRelatorio()) try {
+            RelatorioController.usuarios();
+        } catch (JRException ex) {
+            Logger.getLogger(TelaOpcoes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jRelatorioCadOpcoesActionPerformed
+
+    private void jRelatorioEvenOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRelatorioEvenOpcoesActionPerformed
+        // TODO add your handling code here:
+        if(checaUsuarioRelatorio()) try{
+            RelatorioController.eventos();
+        }catch(JRException e){
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro no relatório");
+        } catch (Exception ex) {
+           JOptionPane.showMessageDialog(this, "Ocorreu um erro no SQL do relatório");
+        }
+    }//GEN-LAST:event_jRelatorioEvenOpcoesActionPerformed
+
+    private void jMenuItemRelEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelEventosActionPerformed
+        // TODO add your handling code here:
+        if(checaUsuarioRelatorio()) try{
+            RelatorioController.eventos();
+        }catch(JRException e){
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro no relatório");
+        } catch (Exception ex) {
+           JOptionPane.showMessageDialog(this, "Ocorreu um erro no SQL do relatório");
+        }
+    }//GEN-LAST:event_jMenuItemRelEventosActionPerformed
+
+    private void jMenuItemRelCadastrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelCadastrosActionPerformed
+        // TODO add your handling code here:
+        if(checaUsuarioRelatorio()) try {
+            RelatorioController.usuarios();
+        } catch (JRException ex) {
+            Logger.getLogger(TelaOpcoes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jMenuItemRelCadastrosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -335,6 +399,15 @@ public class TelaOpcoes extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(this, "Você não tem a permissão para cadastrar evento!\n"
                     + "Esta permissão só é concedida a Moradores que são Gerentes no condomínio.");
+        }
+    }
+    
+    public boolean checaUsuarioRelatorio(){
+        if(aut.getMorOrVis().equals("1")){
+            return true;
+        }else{
+            JOptionPane.showMessageDialog(this, "Opção destinada apenas a gerentes!!");
+            return false;
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
