@@ -19,9 +19,9 @@ import net.sf.jasperreports.view.JasperViewer;
 public class RelatorioDao {
     
     public static void relatorioUsuarios() throws SQLException, JRException {
-        String query = "select login, cpf, senha, nome, gerente from Morador\n" +
+        String query = "select login, cpf, senha, nome, if(gerente = 1, 'Sim', 'Não') as gerente from Morador\n" +
                     "union all \n" +
-                    "select login, cpf, senha, nome, 'null' as gerente from Visitante;";
+                    "select login, cpf, senha, nome, 'nulo' as gerente from Visitante;";
          
         try{
             Conexao connect = new Conexao();
