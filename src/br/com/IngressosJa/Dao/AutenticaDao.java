@@ -57,7 +57,7 @@ public class AutenticaDao {
                 if(login.equals(cpfBD) && password.equals(senhaBD)){
                     aut.setMorOrVis(gerenteBD);
                     aut.setNomeUser(nomeBD);
-                    //JOptionPane.showMessageDialog(null, "Seja bem-vindo "+nomeBD+"!");
+                    JOptionPane.showMessageDialog(null, "Seja bem-vindo "+nomeBD+"!");
                     return true;
                 }
             }
