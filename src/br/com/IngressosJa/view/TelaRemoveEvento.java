@@ -6,7 +6,6 @@
 package br.com.IngressosJa.view;
 
 import br.com.IngressosJa.controller.EventoController;
-import br.com.IngressosJa.controller.RemoveController;
 import br.com.IngressosJa.model.Evento;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -40,6 +39,7 @@ public class TelaRemoveEvento extends javax.swing.JFrame {
         jNomeEventoComboBox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jConfirma = new javax.swing.JButton();
+        jSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,32 +61,41 @@ public class TelaRemoveEvento extends javax.swing.JFrame {
             }
         });
 
+        jSair.setText("Sair");
+        jSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSairActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jNomeEventoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jNomeEventoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(jConfirma)))
-                .addContainerGap(134, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jConfirma, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(91, 91, 91)
+                        .addComponent(jSair, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jNomeEventoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
-                .addComponent(jConfirma)
-                .addGap(84, 84, 84))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jNomeEventoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSair, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(jConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -99,7 +108,7 @@ public class TelaRemoveEvento extends javax.swing.JFrame {
     private void jConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConfirmaActionPerformed
         // TODO add your handling code here:
         try{
-            if(RemoveController.removeEvento(this.jNomeEventoComboBox.getSelectedItem().toString())){
+            if(EventoController.removeEvento(this.jNomeEventoComboBox.getSelectedItem().toString())){
                 JOptionPane.showMessageDialog(this, "Evento removido com sucesso!");
                 dispose();
             }else{
@@ -109,6 +118,11 @@ public class TelaRemoveEvento extends javax.swing.JFrame {
             System.err.println(e);
         }
     }//GEN-LAST:event_jConfirmaActionPerformed
+
+    private void jSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSairActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,5 +177,6 @@ public class TelaRemoveEvento extends javax.swing.JFrame {
     private javax.swing.JButton jConfirma;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JComboBox<String> jNomeEventoComboBox;
+    private javax.swing.JButton jSair;
     // End of variables declaration//GEN-END:variables
 }

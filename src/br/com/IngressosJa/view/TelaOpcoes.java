@@ -7,7 +7,6 @@ package br.com.IngressosJa.view;
 
 import br.com.IngressosJa.controller.Autentica;
 import br.com.IngressosJa.controller.EventoController;
-import br.com.IngressosJa.controller.RemoveController;
 import br.com.IngressosJa.controller.MoradorController;
 import br.com.IngressosJa.controller.RelatorioController;
 import br.com.IngressosJa.model.Visitante;
@@ -46,9 +45,9 @@ public class TelaOpcoes extends javax.swing.JFrame {
         jCadastrarEvenOpcoes = new javax.swing.JButton();
         jRelatorioEvenOpcoes = new javax.swing.JButton();
         jRelatorioCadOpcoes = new javax.swing.JButton();
-        jRemoverUsuario = new javax.swing.JButton();
+        jRemoverMorador = new javax.swing.JButton();
         jRemoverEvento = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jRemoverVisitante = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuArquivo = new javax.swing.JMenu();
         jMenuItemSair = new javax.swing.JMenuItem();
@@ -125,11 +124,11 @@ public class TelaOpcoes extends javax.swing.JFrame {
             }
         });
 
-        jRemoverUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Remove.png"))); // NOI18N
-        jRemoverUsuario.setText("Remover Usuário");
-        jRemoverUsuario.addActionListener(new java.awt.event.ActionListener() {
+        jRemoverMorador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Remove.png"))); // NOI18N
+        jRemoverMorador.setText("Remover Morador");
+        jRemoverMorador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRemoverUsuarioActionPerformed(evt);
+                jRemoverMoradorActionPerformed(evt);
             }
         });
 
@@ -138,6 +137,14 @@ public class TelaOpcoes extends javax.swing.JFrame {
         jRemoverEvento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRemoverEventoActionPerformed(evt);
+            }
+        });
+
+        jRemoverVisitante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Remove.png"))); // NOI18N
+        jRemoverVisitante.setText("Remover Visitante");
+        jRemoverVisitante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRemoverVisitanteActionPerformed(evt);
             }
         });
 
@@ -166,10 +173,11 @@ public class TelaOpcoes extends javax.swing.JFrame {
                                 .addComponent(jCadastrarEvenOpcoes, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                                 .addComponent(jRelatorioEvenOpcoes, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRemoverUsuario)
-                            .addComponent(jRemoverEvento))
+                            .addComponent(jRemoverMorador)
+                            .addComponent(jRemoverEvento)
+                            .addComponent(jRemoverVisitante))
                         .addGap(97, 97, 97))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -179,26 +187,30 @@ public class TelaOpcoes extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCadastroMorOpcoes)
                     .addComponent(jComprarIngOpcoes)
-                    .addComponent(jRemoverUsuario))
+                    .addComponent(jRemoverMorador))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(83, 83, 83)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jCadastroVisOpcoes)
-                            .addComponent(jRelatorioCadOpcoes)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jRemoverEvento)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCadastrarEvenOpcoes)
-                    .addComponent(jRelatorioEvenOpcoes))
-                .addGap(19, 19, 19)
+                            .addComponent(jRelatorioCadOpcoes))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jRemoverVisitante)
+                        .addGap(59, 59, 59)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCadastrarEvenOpcoes)
+                            .addComponent(jRelatorioEvenOpcoes))
+                        .addGap(19, 19, 19))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jRemoverEvento)
+                        .addGap(27, 27, 27)))
                 .addComponent(jSairOpcoesButton)
                 .addGap(22, 22, 22))
         );
-
-        jButton1.setText("jButton1");
 
         jMenuArquivo.setText("Arquivo");
 
@@ -284,11 +296,6 @@ public class TelaOpcoes extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 743, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jButton1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,11 +303,6 @@ public class TelaOpcoes extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jButton1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -368,7 +370,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
     private void jRelatorioCadOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRelatorioCadOpcoesActionPerformed
         // TODO add your handling code here:
-        if(checaUsuarioRelatorio()) try {
+        if(checaUsuario()) try {
             RelatorioController.usuarios();
         } catch (JRException ex) {
             Logger.getLogger(TelaOpcoes.class.getName()).log(Level.SEVERE, null, ex);
@@ -377,7 +379,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
     private void jRelatorioEvenOpcoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRelatorioEvenOpcoesActionPerformed
         // TODO add your handling code here:
-        if(checaUsuarioRelatorio()) try{
+        if(checaUsuario()) try{
             RelatorioController.eventos();
         }catch(JRException e){
             JOptionPane.showMessageDialog(this, "Ocorreu um erro no relatório");
@@ -388,7 +390,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
     private void jMenuItemRelEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelEventosActionPerformed
         // TODO add your handling code here:
-        if(checaUsuarioRelatorio()) try{
+        if(checaUsuario()) try{
             RelatorioController.eventos();
         }catch(JRException e){
             JOptionPane.showMessageDialog(this, "Ocorreu um erro no relatório");
@@ -399,43 +401,32 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
     private void jMenuItemRelCadastrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemRelCadastrosActionPerformed
         // TODO add your handling code here:
-        if(checaUsuarioRelatorio()) try {
+        if(checaUsuario()) try {
             RelatorioController.usuarios();
         } catch (JRException ex) {
             Logger.getLogger(TelaOpcoes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItemRelCadastrosActionPerformed
 
-    private void jRemoverUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRemoverUsuarioActionPerformed
+    private void jRemoverMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRemoverMoradorActionPerformed
         // TODO add your handling code here:
-        String login;
-        try {
-            login = (String )JOptionPane.showInputDialog(null,
-                    "Escolha o evento a ser removido:",
-                    "Remoção", JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    EventoController.buscaEventos().toArray(),
-                    EventoController.buscaEventos().toArray()[0].toString());
-        } catch (Exception ex) {
-            Logger.getLogger(TelaOpcoes.class.getName()).log(Level.SEVERE, null, ex);
+        if(checaUsuario()){
+            TelaRemoveMorador tru = new TelaRemoveMorador();
+            tru.setVisible(true);
         }
-        
-        /*try {
-            if(RemoveController.removeUsuario(login)){
-                JOptionPane.showMessageDialog(this, "Usuário removido com sucesso!");
-            }else{
-                JOptionPane.showMessageDialog(this, "Não foi possível remover o usuário informado");
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(TelaOpcoes.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-    }//GEN-LAST:event_jRemoverUsuarioActionPerformed
+    }//GEN-LAST:event_jRemoverMoradorActionPerformed
 
     private void jRemoverEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRemoverEventoActionPerformed
         // TODO add your handling code here:
         TelaRemoveEvento rem = new TelaRemoveEvento();
         rem.setVisible(true);
     }//GEN-LAST:event_jRemoverEventoActionPerformed
+
+    private void jRemoverVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRemoverVisitanteActionPerformed
+        // TODO add your handling code here:
+        TelaRemoveVisitante rev = new TelaRemoveVisitante();
+        rev.setVisible(true);
+    }//GEN-LAST:event_jRemoverVisitanteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -482,7 +473,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
         }
     }
     
-    public boolean checaUsuarioRelatorio(){
+    public boolean checaUsuario(){
         if(aut.getMorOrVis().equals("1")){
             return true;
         }else{
@@ -491,7 +482,6 @@ public class TelaOpcoes extends javax.swing.JFrame {
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jCadastrarEvenOpcoes;
     private javax.swing.JButton jCadastroMorOpcoes;
     private javax.swing.JButton jCadastroVisOpcoes;
@@ -514,7 +504,8 @@ public class TelaOpcoes extends javax.swing.JFrame {
     private javax.swing.JButton jRelatorioCadOpcoes;
     private javax.swing.JButton jRelatorioEvenOpcoes;
     private javax.swing.JButton jRemoverEvento;
-    private javax.swing.JButton jRemoverUsuario;
+    private javax.swing.JButton jRemoverMorador;
+    private javax.swing.JButton jRemoverVisitante;
     private javax.swing.JButton jSairOpcoesButton;
     // End of variables declaration//GEN-END:variables
 }

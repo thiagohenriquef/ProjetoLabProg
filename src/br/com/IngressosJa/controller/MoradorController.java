@@ -7,6 +7,7 @@ package br.com.IngressosJa.controller;
 
 import br.com.IngressosJa.Dao.MoradorDao;
 import br.com.IngressosJa.model.Morador;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,4 +27,23 @@ public class MoradorController {
             return 0;
         }
     }
+
+    public static ArrayList<Morador> buscaMoradores() throws Exception {
+        try{
+            return MoradorDao.retornaMoradores();
+        }catch(Exception e){
+            throw new Exception();
+        }
+    }
+
+    public static boolean removeMorador(String nome, String cpf) throws Exception {
+        try{
+            if(MoradorDao.removeMorador(nome, cpf)) return true;
+        }catch(Exception e){
+            throw new Exception(e);
+        }
+        
+        return false;
+    }
+
 }

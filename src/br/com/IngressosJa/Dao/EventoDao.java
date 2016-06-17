@@ -55,6 +55,20 @@ public class EventoDao {
         return false;
     }
     
+    public static boolean removeEvento(String evento) throws Exception {
+        try{
+            String query = "delete from Evento where nomeEvento='"+evento+"';";
+            
+            if(updateBD(query)){
+                return true;
+            }
+        }
+        catch(Exception e){
+            throw new Exception();
+        }
+        return false;
+    } 
+    
     public static boolean persistirIngresso(Evento eve) throws Exception{
      try {  
             String query = "insert into Ingresso (idEvento, quantidade, precoMor, PrecoVis) "
