@@ -40,6 +40,9 @@ public class TelaRemoveEvento extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jConfirma = new javax.swing.JButton();
         jSair = new javax.swing.JButton();
+        jLocal = new javax.swing.JLabel();
+        jData = new javax.swing.JLabel();
+        jIngressos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +71,12 @@ public class TelaRemoveEvento extends javax.swing.JFrame {
             }
         });
 
+        jLocal.setText("Local");
+
+        jData.setText("Data");
+
+        jIngressos.setText("Ingressos Disponíveis");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -75,6 +84,9 @@ public class TelaRemoveEvento extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jIngressos)
+                    .addComponent(jData)
+                    .addComponent(jLocal)
                     .addComponent(jNomeEventoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
@@ -91,7 +103,13 @@ public class TelaRemoveEvento extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jNomeEventoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jLocal)
+                .addGap(18, 18, 18)
+                .addComponent(jData)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jIngressos, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jSair, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
                     .addComponent(jConfirma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -103,6 +121,21 @@ public class TelaRemoveEvento extends javax.swing.JFrame {
 
     private void jNomeEventoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNomeEventoComboBoxActionPerformed
         // TODO add your handling code here:
+        try {
+            
+            this.jData.setText("Data: "+EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getDataEvento());
+            this.jLocal.setText("Local: "+EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getLocalEvento());
+            this.jIngressos.setText("Ingressos Disponíveis: "+EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getQuantidadeDeIngresso());
+            /*String gerente; 
+            if(MoradorController.buscaMoradores().get(jNomeUsuarioComboBox.getSelectedIndex()).getGerente()==1) gerente = "Sim";
+            else{gerente = "Não";}
+            
+            this.jCPF.setText("CPF: "+MoradorController.buscaMoradores().get(jNomeUsuarioComboBox.getSelectedIndex()).getCpf());
+            this.jNome.setText("Login: "+MoradorController.buscaMoradores().get(jNomeUsuarioComboBox.getSelectedIndex()).getLogin());
+            this.jGerente.setText("Gerente: "+gerente);*/
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro "+ex);
+        }
     }//GEN-LAST:event_jNomeEventoComboBoxActionPerformed
 
     private void jConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConfirmaActionPerformed
@@ -175,7 +208,10 @@ public class TelaRemoveEvento extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jConfirma;
+    private javax.swing.JLabel jData;
+    private javax.swing.JLabel jIngressos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLocal;
     private javax.swing.JComboBox<String> jNomeEventoComboBox;
     private javax.swing.JButton jSair;
     // End of variables declaration//GEN-END:variables

@@ -418,14 +418,20 @@ public class TelaOpcoes extends javax.swing.JFrame {
 
     private void jRemoverEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRemoverEventoActionPerformed
         // TODO add your handling code here:
-        TelaRemoveEvento rem = new TelaRemoveEvento();
-        rem.setVisible(true);
+        if(checaUsuario()){
+            TelaRemoveEvento rem = new TelaRemoveEvento();
+            rem.setVisible(true);
+        }
+        
     }//GEN-LAST:event_jRemoverEventoActionPerformed
 
     private void jRemoverVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRemoverVisitanteActionPerformed
         // TODO add your handling code here:
-        TelaRemoveVisitante rev = new TelaRemoveVisitante();
-        rev.setVisible(true);
+        if(checaUsuario()){
+            TelaRemoveVisitante rev = new TelaRemoveVisitante();
+            rev.setVisible(true);
+        }
+        
     }//GEN-LAST:event_jRemoverVisitanteActionPerformed
 
     /**
