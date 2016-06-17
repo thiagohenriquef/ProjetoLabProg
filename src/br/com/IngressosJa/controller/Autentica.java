@@ -7,7 +7,6 @@ import br.com.IngressosJa.model.Visitante;
 import br.com.IngressosJa.view.TelaInicial;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 /**

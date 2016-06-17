@@ -6,6 +6,8 @@
 package br.com.IngressosJa.view;
 
 import br.com.IngressosJa.controller.Autentica;
+import br.com.IngressosJa.controller.EventoController;
+import br.com.IngressosJa.controller.RemoveController;
 import br.com.IngressosJa.controller.MoradorController;
 import br.com.IngressosJa.controller.RelatorioController;
 import br.com.IngressosJa.model.Visitante;
@@ -44,6 +46,9 @@ public class TelaOpcoes extends javax.swing.JFrame {
         jCadastrarEvenOpcoes = new javax.swing.JButton();
         jRelatorioEvenOpcoes = new javax.swing.JButton();
         jRelatorioCadOpcoes = new javax.swing.JButton();
+        jRemoverUsuario = new javax.swing.JButton();
+        jRemoverEvento = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuArquivo = new javax.swing.JMenu();
         jMenuItemSair = new javax.swing.JMenuItem();
@@ -120,6 +125,22 @@ public class TelaOpcoes extends javax.swing.JFrame {
             }
         });
 
+        jRemoverUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Remove.png"))); // NOI18N
+        jRemoverUsuario.setText("Remover Usuário");
+        jRemoverUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRemoverUsuarioActionPerformed(evt);
+            }
+        });
+
+        jRemoverEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Remove.png"))); // NOI18N
+        jRemoverEvento.setText("Remover Evento");
+        jRemoverEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRemoverEventoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -133,19 +154,23 @@ public class TelaOpcoes extends javax.swing.JFrame {
                         .addGap(35, 35, 35))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jCadastroVisOpcoes)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jCadastroVisOpcoes)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jRelatorioCadOpcoes))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jCadastroMorOpcoes)
                                 .addGap(32, 32, 32)
                                 .addComponent(jComprarIngOpcoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jCadastrarEvenOpcoes, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jRelatorioEvenOpcoes, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(209, 209, 209)
-                                .addComponent(jRelatorioCadOpcoes)))
-                        .addContainerGap(196, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                                .addComponent(jRelatorioEvenOpcoes, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jRemoverUsuario)
+                            .addComponent(jRemoverEvento))
+                        .addGap(97, 97, 97))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,12 +178,18 @@ public class TelaOpcoes extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCadastroMorOpcoes)
-                    .addComponent(jComprarIngOpcoes))
-                .addGap(83, 83, 83)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCadastroVisOpcoes)
-                    .addComponent(jRelatorioCadOpcoes))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                    .addComponent(jComprarIngOpcoes)
+                    .addComponent(jRemoverUsuario))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jCadastroVisOpcoes)
+                            .addComponent(jRelatorioCadOpcoes)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jRemoverEvento)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCadastrarEvenOpcoes)
                     .addComponent(jRelatorioEvenOpcoes))
@@ -166,6 +197,8 @@ public class TelaOpcoes extends javax.swing.JFrame {
                 .addComponent(jSairOpcoesButton)
                 .addGap(22, 22, 22))
         );
+
+        jButton1.setText("jButton1");
 
         jMenuArquivo.setText("Arquivo");
 
@@ -247,11 +280,27 @@ public class TelaOpcoes extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 743, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jButton1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jButton1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -357,6 +406,37 @@ public class TelaOpcoes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemRelCadastrosActionPerformed
 
+    private void jRemoverUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRemoverUsuarioActionPerformed
+        // TODO add your handling code here:
+        String login;
+        try {
+            login = (String )JOptionPane.showInputDialog(null,
+                    "Escolha o evento a ser removido:",
+                    "Remoção", JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    EventoController.buscaEventos().toArray(),
+                    EventoController.buscaEventos().toArray()[0].toString());
+        } catch (Exception ex) {
+            Logger.getLogger(TelaOpcoes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        /*try {
+            if(RemoveController.removeUsuario(login)){
+                JOptionPane.showMessageDialog(this, "Usuário removido com sucesso!");
+            }else{
+                JOptionPane.showMessageDialog(this, "Não foi possível remover o usuário informado");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(TelaOpcoes.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+    }//GEN-LAST:event_jRemoverUsuarioActionPerformed
+
+    private void jRemoverEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRemoverEventoActionPerformed
+        // TODO add your handling code here:
+        TelaRemoveEvento rem = new TelaRemoveEvento();
+        rem.setVisible(true);
+    }//GEN-LAST:event_jRemoverEventoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -411,6 +491,7 @@ public class TelaOpcoes extends javax.swing.JFrame {
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jCadastrarEvenOpcoes;
     private javax.swing.JButton jCadastroMorOpcoes;
     private javax.swing.JButton jCadastroVisOpcoes;
@@ -432,6 +513,8 @@ public class TelaOpcoes extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jRelatorioCadOpcoes;
     private javax.swing.JButton jRelatorioEvenOpcoes;
+    private javax.swing.JButton jRemoverEvento;
+    private javax.swing.JButton jRemoverUsuario;
     private javax.swing.JButton jSairOpcoesButton;
     // End of variables declaration//GEN-END:variables
 }

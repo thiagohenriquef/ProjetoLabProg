@@ -258,6 +258,7 @@ public class TelaCadastroEvento extends javax.swing.JFrame {
         try{
             if(EventoController.persistirEvento(evento)){
                 JOptionPane.showMessageDialog(this, "Evento criado com Sucesso");
+                dispose();
             }
         }
         catch(Exception e){
