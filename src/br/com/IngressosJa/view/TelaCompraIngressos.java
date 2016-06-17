@@ -9,10 +9,6 @@ import br.com.IngressosJa.controller.Autentica;
 import br.com.IngressosJa.controller.EventoController;
 import br.com.IngressosJa.model.Evento;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
@@ -23,10 +19,16 @@ import javax.swing.SpinnerNumberModel;
  */
 public class TelaCompraIngressos extends javax.swing.JFrame {
     Autentica aut = new Autentica();
+    ArrayList<Evento> eve;
     /**
      * Creates new form TelaCompraIngressos
      */
     public TelaCompraIngressos() {
+        try {
+            this.eve = new ArrayList<>(EventoController.buscaEventos());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro!! "+ex);
+        }
         initComponents();
         this.preencheComboBox();
         this.jQuantosIngressos.setVisible(false);
@@ -225,7 +227,7 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
             if(EventoController.decrementaIngressos(this.jQntIngressosSpinner.getValue().toString(), 
                     this.jNomeEventoComboBox.getSelectedItem().toString())) dispose();
         } catch (Exception ex) {
-            Logger.getLogger(TelaCompraIngressos.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Erro!! "+ex);
         }
     }//GEN-LAST:event_jFinalizarCompraButtonActionPerformed
 
@@ -235,18 +237,18 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
 
     private void jNomeEventoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNomeEventoComboBoxActionPerformed
         try {
-            this.jDataEvento.setText("Data do evento: \t"+EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getDataEvento());
-            this.jQuantidadeDisponivel.setText("Quantidade: \t"+EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getQuantidadeDeIngresso());
-            this.jPrecoMor.setText("Morador: \t"+EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getPrecoMor());
-            this.jPrecoVis.setText("Visitante: \t"+EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getPrecoVis());
-            this.jLocalEvento.setText("Local: \t"+EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getLocalEvento());
-            this.jQntIngressosSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getQuantidadeDeIngresso(), 1));
+            this.jDataEvento.setText("Data do evento: \t"+/*EventoController.buscaEventos()*/eve.get(jNomeEventoComboBox.getSelectedIndex()).getDataEvento());
+            this.jQuantidadeDisponivel.setText("Quantidade: \t"+/*EventoController.buscaEventos()*/eve.get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getQuantidadeDeIngresso());
+            this.jPrecoMor.setText("Morador: \t"+/*EventoController.buscaEventos()*/eve.get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getPrecoMor());
+            this.jPrecoVis.setText("Visitante: \t"+/*EventoController.buscaEventos()*/eve.get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getPrecoVis());
+            this.jLocalEvento.setText("Local: \t"+/*EventoController.buscaEventos()*/eve.get(jNomeEventoComboBox.getSelectedIndex()).getLocalEvento());
+            this.jQntIngressosSpinner.setModel(new javax.swing.SpinnerNumberModel(1, 1, /*EventoController.buscaEventos()*/eve.get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getQuantidadeDeIngresso(), 1));
             this.jQuantosIngressos.setVisible(true);
             this.jQntIngressosSpinner.setVisible(true);
             //this.jPrecoTotal.setVisible(true);
             
         } catch (Exception ex) {
-            Logger.getLogger(TelaCompraIngressos.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Erro!! "+ex);
         }
 
     }//GEN-LAST:event_jNomeEventoComboBoxActionPerformed
@@ -295,7 +297,7 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
     
     public void preencheComboBox(){
         try{
-            ArrayList<Evento> eve = new ArrayList<>(EventoController.buscaEventos());
+            //ArrayList<Evento> eve = new ArrayList<>(EventoController.buscaEventos());
             eve = EventoController.buscaEventos();
             for(int i =0; i<eve.size(); i++){
             this.jNomeEventoComboBox.addItem(eve.get(i).getNomeEvento());

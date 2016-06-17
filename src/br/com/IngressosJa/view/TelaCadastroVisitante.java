@@ -294,6 +294,7 @@ public class TelaCadastroVisitante extends javax.swing.JFrame {
             }
         }
         catch(Exception ex){
+            ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Ocorreu um erro!!\nPor favor, verifique o CPF do morador que foi informado");
         }
         

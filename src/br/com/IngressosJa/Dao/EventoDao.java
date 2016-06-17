@@ -94,7 +94,9 @@ public class EventoDao {
                 String nomeBD = rs.getString("nomeEvento");
                 String id = rs.getString("idEvento");
                 
-                if(nomeBD.equals(nome)) return Integer.parseInt(id);
+                if(nomeBD.equals(nome)) 
+                    rs.close();
+                    return Integer.parseInt(id);
             }
             
         }
@@ -128,6 +130,7 @@ public class EventoDao {
   
                 nomeEvento.add(eve);
             }
+            rs.close();
             return nomeEvento;
         }catch(Exception e){
             throw new Exception();

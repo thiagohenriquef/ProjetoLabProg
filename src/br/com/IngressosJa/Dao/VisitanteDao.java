@@ -90,6 +90,7 @@ public class VisitanteDao {
                 
                 nomeVisitante.add(vis);
                 }
+            rs.close();
             return nomeVisitante;
         }catch(Exception e){
             throw new Exception();

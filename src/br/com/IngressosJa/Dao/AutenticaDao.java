@@ -33,9 +33,10 @@ public class AutenticaDao {
             ResultSet rs = st.executeQuery(query);
             
             if(checaTabelas(rs, login, password)){
+               rs.close();
                 return true;
             }
-            rs.close();
+            //rs.close();
             
         }
         catch(Exception e){
@@ -57,7 +58,8 @@ public class AutenticaDao {
                 if(login.equals(cpfBD) && password.equals(senhaBD)){
                     aut.setMorOrVis(gerenteBD);
                     aut.setNomeUser(nomeBD);
-                    //JOptionPane.showMessageDialog(null, "Seja bem-vindo "+nomeBD+"!");
+                    JOptionPane.showMessageDialog(null, "Seja bem-vindo "+nomeBD+"!");
+                    rs.close();
                     return true;
                 }
             }

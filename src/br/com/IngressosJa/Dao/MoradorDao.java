@@ -94,6 +94,7 @@ public class MoradorDao {
                 
                 nomeMorador.add(mor);
                 }
+            rs.close();
             return nomeMorador;
         }catch(Exception e){
             throw new Exception();
