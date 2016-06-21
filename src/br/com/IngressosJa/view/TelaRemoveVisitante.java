@@ -15,11 +15,16 @@ import javax.swing.JOptionPane;
  * @author thiago
  */
 public class TelaRemoveVisitante extends javax.swing.JFrame {
-
+    ArrayList<Visitante> vis;
     /**
      * Creates new form TelaRemoveVisitante
      */
     public TelaRemoveVisitante() {
+        try {
+            this.vis = new ArrayList<>(VisitanteController.buscaVisitantes());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro!! "+ex);
+        }
         initComponents();
         this.preencheComboBox();
     }
@@ -120,9 +125,9 @@ public class TelaRemoveVisitante extends javax.swing.JFrame {
     private void jNomeUsuarioComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNomeUsuarioComboBoxActionPerformed
         // TODO add your handling code here:
         try {
-            this.jCPF.setText("CPF: "+VisitanteController.buscaVisitantes().get(jNomeUsuarioComboBox.getSelectedIndex()).getCpf());
-            this.jNome.setText("Login: "+VisitanteController.buscaVisitantes().get(jNomeUsuarioComboBox.getSelectedIndex()).getLogin());
-            this.jCPFVinculado.setText("CPF vinculado: "+VisitanteController.buscaVisitantes().get(jNomeUsuarioComboBox.getSelectedIndex()).getCpfDoMorador());
+            this.jCPF.setText("CPF: "+/*VisitanteController.buscaVisitantes()*/vis.get(jNomeUsuarioComboBox.getSelectedIndex()).getCpf());
+            this.jNome.setText("Login: "+/*VisitanteController.buscaVisitantes()*/vis.get(jNomeUsuarioComboBox.getSelectedIndex()).getLogin());
+            this.jCPFVinculado.setText("CPF vinculado: "+/*VisitanteController.buscaVisitantes()*/vis.get(jNomeUsuarioComboBox.getSelectedIndex()).getCpfDoMorador());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Ocorreu um erro "+ex);
         }
@@ -136,7 +141,7 @@ public class TelaRemoveVisitante extends javax.swing.JFrame {
     private void jSelecaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSelecaoActionPerformed
         // TODO add your handling code here:
         try{
-            if(VisitanteController.removeVisitante(this.jNomeUsuarioComboBox.getSelectedItem().toString(), VisitanteController.buscaVisitantes().get(jNomeUsuarioComboBox.getSelectedIndex()).getCpf())){
+            if(VisitanteController.removeVisitante(this.jNomeUsuarioComboBox.getSelectedItem().toString(), /*VisitanteController.buscaVisitantes()*/vis.get(jNomeUsuarioComboBox.getSelectedIndex()).getCpf())){
                 JOptionPane.showMessageDialog(this, "Visitante removido com sucesso");
                 dispose();
             }
@@ -182,7 +187,7 @@ public class TelaRemoveVisitante extends javax.swing.JFrame {
     
      public void preencheComboBox(){
         try{
-            ArrayList<Visitante> vis = new ArrayList<>(VisitanteController.buscaVisitantes());
+            //ArrayList<Visitante> vis = new ArrayList<>(VisitanteController.buscaVisitantes());
             vis = VisitanteController.buscaVisitantes();
             for(int i =0; i<vis.size(); i++){
                 this.jNomeUsuarioComboBox.addItem(vis.get(i).getNome());

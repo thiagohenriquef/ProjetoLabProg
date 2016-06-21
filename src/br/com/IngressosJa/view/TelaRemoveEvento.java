@@ -17,11 +17,17 @@ import javax.swing.JOptionPane;
  * @author thiago
  */
 public class TelaRemoveEvento extends javax.swing.JFrame {
+    ArrayList<Evento> eve;
 
     /**
      * Creates new form RemoveEvento
      */
     public TelaRemoveEvento() {
+        try {
+            this.eve = new ArrayList<>(EventoController.buscaEventos());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro!! "+ex);
+        }
         initComponents();
         this.preencheComboBox();
 
@@ -123,16 +129,9 @@ public class TelaRemoveEvento extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             
-            this.jData.setText("Data: "+EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getDataEvento());
-            this.jLocal.setText("Local: "+EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getLocalEvento());
-            this.jIngressos.setText("Ingressos Disponíveis: "+EventoController.buscaEventos().get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getQuantidadeDeIngresso());
-            /*String gerente; 
-            if(MoradorController.buscaMoradores().get(jNomeUsuarioComboBox.getSelectedIndex()).getGerente()==1) gerente = "Sim";
-            else{gerente = "Não";}
-            
-            this.jCPF.setText("CPF: "+MoradorController.buscaMoradores().get(jNomeUsuarioComboBox.getSelectedIndex()).getCpf());
-            this.jNome.setText("Login: "+MoradorController.buscaMoradores().get(jNomeUsuarioComboBox.getSelectedIndex()).getLogin());
-            this.jGerente.setText("Gerente: "+gerente);*/
+            this.jData.setText("Data: "+/*EventoController.buscaEventos()*/eve.get(jNomeEventoComboBox.getSelectedIndex()).getDataEvento());
+            this.jLocal.setText("Local: "+/*EventoController.buscaEventos()*/eve.get(jNomeEventoComboBox.getSelectedIndex()).getLocalEvento());
+            this.jIngressos.setText("Ingressos Disponíveis: "+/*EventoController.buscaEventos()*/eve.get(jNomeEventoComboBox.getSelectedIndex()).getIngressos().getQuantidadeDeIngresso());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Ocorreu um erro "+ex);
         }
@@ -195,7 +194,7 @@ public class TelaRemoveEvento extends javax.swing.JFrame {
 
     public void preencheComboBox(){
         try{
-            ArrayList<Evento> eve = new ArrayList<>(EventoController.buscaEventos());
+            //ArrayList<Evento> eve = new ArrayList<>(EventoController.buscaEventos());
             eve = EventoController.buscaEventos();
             for(int i =0; i<eve.size(); i++){
             this.jNomeEventoComboBox.addItem(eve.get(i).getNomeEvento());

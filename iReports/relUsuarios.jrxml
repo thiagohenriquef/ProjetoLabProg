@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relUsuarios" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8eaa7f61-d2e2-43cb-9427-e8920e516117">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="76"/>
+	<property name="ireport.y" value="21"/>
 	<queryString language="SQL">
 		<![CDATA[select cpf, login, senha, nome, gerente from Morador
 union all
@@ -36,7 +36,19 @@ select cpf, login, senha, nome, 'null' as gerente from Visitante;]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="137" splitType="Stretch">
+			<staticText>
+				<reportElement x="100" y="0" width="208" height="137" uuid="629a1b3a-435a-45c7-b778-fae280ed4b01"/>
+				<textElement>
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[Relatório de Usuários]]></text>
+			</staticText>
+			<image>
+				<reportElement x="396" y="9" width="157" height="128" uuid="39625ea3-5d68-4008-8199-ca244455d0ef"/>
+				<imageExpression><![CDATA["/home/thiago/NetBeansProjects/ProjetoSIN143/src/Imagens/ufv128.png"]]></imageExpression>
+			</image>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>
@@ -45,24 +57,24 @@ select cpf, login, senha, nome, 'null' as gerente from Visitante;]]>
 		<band height="61" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="21" width="100" height="20" uuid="e6124f87-5b7f-4785-84d0-06b7e320c6b0"/>
-				<text><![CDATA[nome]]></text>
+				<text><![CDATA[Nome]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="455" y="21" width="100" height="20" uuid="2cd6a447-ae0b-4043-9294-0b31f8d88693"/>
-				<text><![CDATA[gerente]]></text>
+				<reportElement x="455" y="21" width="100" height="40" uuid="2cd6a447-ae0b-4043-9294-0b31f8d88693"/>
+				<text><![CDATA[Gerente (nulo é visitante)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="137" y="21" width="100" height="20" uuid="8d2d38c7-4776-4739-9881-d3406451a9db"/>
-				<text><![CDATA[cpf]]></text>
+				<text><![CDATA[CPF]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="296" y="21" width="100" height="20" uuid="04d18797-94d5-4854-82bb-f7d5b8ab8fa8"/>
-				<text><![CDATA[login]]></text>
+				<text><![CDATA[Login]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="100" height="20" uuid="e683ba3e-03a0-4dec-a937-6f3dbd9656ba"/>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>

@@ -15,11 +15,16 @@ import javax.swing.JOptionPane;
  * @author thiago
  */
 public class TelaRemoveMorador extends javax.swing.JFrame {
-
+    ArrayList<Morador> mor;
     /**
      * Creates new form TelaRemoveUsuario
      */
     public TelaRemoveMorador() {
+        try {
+            this.mor = new ArrayList<>(MoradorController.buscaMoradores());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro!! "+ex);
+        }
         initComponents();
         JOptionPane.showMessageDialog(null,"Muito cuidado nesta"
                 + " operação! \n "
@@ -125,11 +130,11 @@ public class TelaRemoveMorador extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             String gerente; 
-            if(MoradorController.buscaMoradores().get(jNomeUsuarioComboBox.getSelectedIndex()).getGerente()==1) gerente = "Sim";
+            if(/*MoradorController.buscaMoradores()*/mor.get(jNomeUsuarioComboBox.getSelectedIndex()).getGerente()==1) gerente = "Sim";
             else{gerente = "Não";}
             
-            this.jCPF.setText("CPF: "+MoradorController.buscaMoradores().get(jNomeUsuarioComboBox.getSelectedIndex()).getCpf());
-            this.jNome.setText("Login: "+MoradorController.buscaMoradores().get(jNomeUsuarioComboBox.getSelectedIndex()).getLogin());
+            this.jCPF.setText("CPF: "+/*MoradorController.buscaMoradores()*/mor.get(jNomeUsuarioComboBox.getSelectedIndex()).getCpf());
+            this.jNome.setText("Login: "+/*MoradorController.buscaMoradores()*/mor.get(jNomeUsuarioComboBox.getSelectedIndex()).getLogin());
             this.jGerente.setText("Gerente: "+gerente);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Ocorreu um erro "+ex);
@@ -201,7 +206,7 @@ public class TelaRemoveMorador extends javax.swing.JFrame {
 
     public void preencheComboBox(){
         try{
-            ArrayList<Morador> mor = new ArrayList<>(MoradorController.buscaMoradores());
+            //ArrayList<Morador> mor = new ArrayList<>(MoradorController.buscaMoradores());
             mor = MoradorController.buscaMoradores();
             for(int i =0; i<mor.size(); i++){
                 this.jNomeUsuarioComboBox.addItem(mor.get(i).getNome());
