@@ -51,7 +51,7 @@ public class MoradorDao {
        
        try{
             String query = "insert into Morador(cpf,email,login,nome,senha,telefone,gerente)"+
-                    " values('"
+                    "values('"
                     +morador.getCpf()+"', '"
                     +morador.getEmail()+"', '"
                     +morador.getLogin()+"', '"
@@ -59,8 +59,8 @@ public class MoradorDao {
                     +morador.getSenha()+"','"
                     +morador.getTelefone()+"','"
                     +morador.getGerente()+"');";
-            System.out.println(query);
-            if(updateBD(query)) return true;
+            
+            if(insereBD(query)) return true;
             
         }catch(Exception e){
             System.err.println("Ocorreu algum problema");
