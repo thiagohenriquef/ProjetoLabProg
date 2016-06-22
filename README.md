@@ -8,7 +8,7 @@ inserção de visitante -> ok <p>
 login -> ok <p>
 cadastrar evento -> ok <p>
 comprar ingresso -> ok <p>
-relatorio de vendas -> ok, necessário apenas deixar o relatório mais bonito <p>
+relatorio de vendas -> ok <p>
 relatorio de cadastro -> idem <p>
 remover morador -> ok, só falta deixar o menu mais bonito <p>
 remover usuário -> ok <p>
