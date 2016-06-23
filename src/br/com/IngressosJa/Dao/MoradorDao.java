@@ -60,7 +60,7 @@ public class MoradorDao {
                     +morador.getTelefone()+"','"
                     +morador.getGerente()+"');";
             
-            if(insereBD(query)) return true;
+            if(updateBD(query)) return true;
             
         }catch(Exception e){
             System.err.println("Ocorreu algum problema");

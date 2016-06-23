@@ -13,6 +13,7 @@ public class EventoDao {
         Conexao connect = new Conexao();
         Statement st = connect.getSt();
         ResultSet rs = st.executeQuery(query);
+        //connect.getCon().close();
         return rs;
     }
     
@@ -21,6 +22,7 @@ public class EventoDao {
             Conexao connect = new Conexao();
             Statement st = connect.getSt();
             st.executeQuery(query);
+            connect.getCon().close();
             return true;
         }catch(SQLException e){
             throw new SQLException(e);
@@ -32,6 +34,7 @@ public class EventoDao {
             Conexao connect = new Conexao();
             Statement st = connect.getSt();
             st.executeUpdate(query);
+            connect.getCon().close();
             return true;
         }catch(SQLException e){
             throw new SQLException(e);
