@@ -2,6 +2,7 @@ package br.com.IngressosJa.Dao;
 
 import br.com.IngressosJa.persistencia.Conexao;
 import com.mysql.jdbc.Statement;
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -28,7 +29,7 @@ public class RelatorioDao {
             Statement st = connect.getSt();
             ResultSet rs = st.executeQuery(query);
             Map Map = new HashMap();
-            String file = System.getProperty("user.dir") + "file.jasper";
+            //String file = System.getProperty("user.dir") + "/iReports/relUsuarios.jasper";
             JRResultSetDataSource relResult = new JRResultSetDataSource(connect.getSt().getResultSet());
             JasperPrint jpPrint = JasperFillManager.fillReport("iReports/relUsuarios.jasper", new HashMap(), relResult);
             JasperViewer jv = new JasperViewer(jpPrint, false);
@@ -56,7 +57,7 @@ public class RelatorioDao {
             Statement st = connect.getSt();
             ResultSet rs = st.executeQuery(query);
             Map Map = new HashMap();
-            String file = System.getProperty("user.dir") + "file.jasper";
+            //String file = System.getProperty("user.dir") + "file.jasper";
             JRResultSetDataSource relResult = new JRResultSetDataSource(connect.getSt().getResultSet());
             JasperPrint jpPrint = JasperFillManager.fillReport("iReports/relEventos.jasper", new HashMap(), relResult);
             JasperViewer jv = new JasperViewer(jpPrint, false);
