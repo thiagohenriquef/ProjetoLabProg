@@ -1,6 +1,7 @@
 package br.com.IngressosJa.controller;
 
 import br.com.IngressosJa.Dao.RelatorioDao;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +17,8 @@ public class RelatorioController {
         try {
             RelatorioDao.relatorioUsuarios();
         } catch (SQLException ex) {
+            Logger.getLogger(RelatorioController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(RelatorioController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

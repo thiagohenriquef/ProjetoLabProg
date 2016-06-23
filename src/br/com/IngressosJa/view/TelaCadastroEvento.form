@@ -235,6 +235,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jCadastroEvePreVisitante">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCadastroEvePreVisitanteActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jCadastroEveQuantidadeIng">
         </Component>

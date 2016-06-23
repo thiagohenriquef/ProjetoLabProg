@@ -2,6 +2,8 @@ package br.com.IngressosJa.Dao;
 
 import br.com.IngressosJa.persistencia.Conexao;
 import com.mysql.jdbc.Statement;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,8 +20,8 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author thiago
  */
 public class RelatorioDao {
-    
-    public static void relatorioUsuarios() throws SQLException, JRException {
+    File file = new File(".");
+    public static void relatorioUsuarios() throws SQLException, JRException, IOException {
         String query = "select login, cpf, senha, nome, if(gerente = 1, 'Sim', 'Não') as gerente from Morador\n" +
                     "union all \n" +
                     "select login, cpf, senha, nome, 'nulo' as gerente from Visitante;";

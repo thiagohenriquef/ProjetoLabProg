@@ -1,6 +1,7 @@
 package br.com.IngressosJa.controller;
 
 import br.com.IngressosJa.Dao.EventoDao;
+import br.com.IngressosJa.Dao.MoradorDao;
 import br.com.IngressosJa.model.Evento;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -15,8 +16,8 @@ public class EventoController {
     Autentica aut = new Autentica();
     
     public static boolean persistirEvento(Evento evento) throws Exception {
-        if(EventoDao.persistirEvento(evento)){
-            if(EventoDao.persistirIngresso(evento)){
+        if(EventoDao.persistirEvento(evento)==true){
+            if(EventoDao.persistirIngresso(evento)==true){
                 return true;
             }
         }else{
@@ -28,9 +29,10 @@ public class EventoController {
     
     public static ArrayList<Evento> buscaEventos() throws Exception{
         try{
-            return EventoDao.retornaEventos();
+            return EventoDao.retornaEvento();
         }catch(Exception e){
-            throw new Exception();
+            e.printStackTrace();
+            throw new Exception(e);
         }
     }
     

@@ -24,11 +24,11 @@ public class TelaCompraIngressos extends javax.swing.JFrame {
      * Creates new form TelaCompraIngressos
      */
     public TelaCompraIngressos() {
-        try {
+        /*try {
             this.eve = new ArrayList<>(EventoController.buscaEventos());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Erro!! "+ex);
-        }
+        }*/
         initComponents();
         this.preencheComboBox();
         this.jQuantosIngressos.setVisible(false);

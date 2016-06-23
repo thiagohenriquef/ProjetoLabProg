@@ -84,6 +84,12 @@ public class TelaCadastroEvento extends javax.swing.JFrame {
             }
         });
 
+        jCadastroEvePreVisitante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCadastroEvePreVisitanteActionPerformed(evt);
+            }
+        });
+
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel7.setText("Cadastro de Evento");
 
@@ -262,10 +268,14 @@ public class TelaCadastroEvento extends javax.swing.JFrame {
             }
         }
         catch(Exception e){
-            System.out.println("Ocorreu um erro na inserção"+e);
+            JOptionPane.showMessageDialog(this, "Ocorreu um erro na inserção"+e);
             e.printStackTrace();
         }
     }//GEN-LAST:event_jCadastrarEventoButtonActionPerformed
+
+    private void jCadastroEvePreVisitanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCadastroEvePreVisitanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCadastroEvePreVisitanteActionPerformed
 
     /**
      * @param args the command line arguments
