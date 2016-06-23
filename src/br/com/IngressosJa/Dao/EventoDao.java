@@ -80,7 +80,6 @@ public class EventoDao {
                     +eve.getIngressos().getQuantidadeDeIngresso()+"', '"
                     +eve.getIngressos().getPrecoMor()+"', '"
                     +eve.getIngressos().getPrecoVis()+"');";
-            System.err.println(query);
             if (updateBD(query)==true) return true;
          }catch (Exception e) {
             throw new Exception("Erro ao Salvar Dados do Ingresso!");
@@ -122,17 +121,6 @@ public class EventoDao {
                 String idEventoBD = rs.getString("idEvento");
                 String localEventoBD = rs.getString("localEvento");
                 String dataEventoBD = rs.getString("dataEvento");
-                
-                //ResultSet ing = retornaIngressos(idEventoBD);
-                //int quantidadeIngBD = ing.getInt("quantidade");
-                //int precoMorBD = ing.getInt("precoMor");
-                //int precoVisBD = ing.getInt("precoVis");
-  
-                //String quantidadeIngBD = retornaQuant(idEventoBD);//ing.getString("quantidade");
-                //String precoMorBD = retornaPrecoMor(idEventoBD);//ing.getString("precoMor");
-                //String precoVisBD = retornaPrecoVis(idEventoBD);//ing.getString("precoVis");
-                //System.out.println(quantidadeIngBD+precoMorBD+precoVisBD);
-                
                 int quantidadeIngBD = retornaQuant(idEventoBD);
                 int precoMorBD = retornaPrecoMor(idEventoBD);
                 int precoVisBD = retornaPrecoVis(idEventoBD);
@@ -144,7 +132,6 @@ public class EventoDao {
                 eve.setLocalEvento(localEventoBD);
                 
                 nomeEvento.add(eve);
-                //ing.close();
             }
             rs.close();
             return nomeEvento;

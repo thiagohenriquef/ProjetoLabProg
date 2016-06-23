@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 public class Conexao {
     private com.mysql.jdbc.Connection con;
     private Statement st;
-    private String url = "jdbc:mysql://localhost:3306/dbevento?autoReconnect=true&useSSL=false";
+    private String url = "jdbc:mysql://127.0.0.1:3306/dbevento?autoReconnect=true&useSSL=false";
     private String user = "root";
     private String pass = "123456";
     
@@ -26,7 +26,7 @@ public class Conexao {
         } catch (Exception e) {
             // Mostrando mensagem ao usuario caso a listagem apresente algum erro ...
             JOptionPane.showMessageDialog(null, e.getMessage());
-             JOptionPane.showMessageDialog(null," Erro na Conexao");
+             //JOptionPane.showMessageDialog(null," Erro na Conexao");
         }
     }
     
