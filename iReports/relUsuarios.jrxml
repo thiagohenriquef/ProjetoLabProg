@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relUsuarios" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8eaa7f61-d2e2-43cb-9427-e8920e516117">
 	<property name="ireport.zoom" value="1.3310000000000004"/>
-	<property name="ireport.x" value="76"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="21"/>
 	<queryString language="SQL">
 		<![CDATA[select cpf, login, senha, nome, gerente from Morador
@@ -38,16 +38,12 @@ select cpf, login, senha, nome, 'null' as gerente from Visitante;]]>
 	<title>
 		<band height="137" splitType="Stretch">
 			<staticText>
-				<reportElement x="100" y="0" width="208" height="137" uuid="629a1b3a-435a-45c7-b778-fae280ed4b01"/>
+				<reportElement x="100" y="0" width="407" height="137" uuid="629a1b3a-435a-45c7-b778-fae280ed4b01"/>
 				<textElement>
 					<font size="36"/>
 				</textElement>
 				<text><![CDATA[Relatório de Usuários]]></text>
 			</staticText>
-			<image>
-				<reportElement x="396" y="9" width="157" height="128" uuid="39625ea3-5d68-4008-8199-ca244455d0ef"/>
-				<imageExpression><![CDATA["/home/thiago/NetBeansProjects/ProjetoSIN143/src/Imagens/ufv128.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>

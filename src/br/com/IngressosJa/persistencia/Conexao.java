@@ -14,7 +14,7 @@ public class Conexao {
     private Statement st;
     private String url = "jdbc:mysql://127.0.0.1:3306/dbevento?autoReconnect=true&useSSL=false";
     private String user = "root";
-    private String pass = "123456";
+    private String pass = "";
     
     public Conexao(){
         try {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relEventos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bbb83fa4-f048-46f7-9510-793e659e1c6e">
 	<property name="ireport.zoom" value="1.4641000000000006"/>
-	<property name="ireport.x" value="158"/>
-	<property name="ireport.y" value="2"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="37"/>
 	<property name="ireport.background.image.properties" value="false,true,0.25,0,0,0,0,0,0"/>
 	<queryString language="SQL">
 		<![CDATA[select Evento.nomeEvento, Evento.localEvento, Evento.dataEvento, Ingresso.quantidade, Ingresso.precoMor, Ingresso.PrecoVis
@@ -32,12 +32,8 @@ where Evento.idEvento=Ingresso.idEvento;]]>
 	</background>
 	<title>
 		<band height="128">
-			<image>
-				<reportElement x="397" y="0" width="157" height="128" uuid="8e457ef7-6915-4de9-9c87-d924853304aa"/>
-				<imageExpression><![CDATA["/home/thiago/NetBeansProjects/ProjetoSIN143/src/Imagens/ufv128.png"]]></imageExpression>
-			</image>
 			<staticText>
-				<reportElement x="120" y="0" width="197" height="128" uuid="7f61d857-0a95-4f71-a439-93a660d94fbd"/>
+				<reportElement x="120" y="0" width="351" height="128" uuid="7f61d857-0a95-4f71-a439-93a660d94fbd"/>
 				<textElement>
 					<font size="36"/>
 				</textElement>

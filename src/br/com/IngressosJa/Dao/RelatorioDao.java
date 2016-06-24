@@ -4,7 +4,6 @@ import br.com.IngressosJa.persistencia.Conexao;
 import com.mysql.jdbc.Statement;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -20,8 +19,8 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author thiago
  */
 public class RelatorioDao {
-    File file = new File(".");
     public static void relatorioUsuarios() throws SQLException, JRException, IOException {
+        File dir = new File(".");
         String query = "select login, cpf, senha, nome, if(gerente = 1, 'Sim', 'Não') as gerente from Morador\n" +
                     "union all \n" +
                     "select login, cpf, senha, nome, 'nulo' as gerente from Visitante;";
@@ -31,9 +30,11 @@ public class RelatorioDao {
             Statement st = connect.getSt();
             ResultSet rs = st.executeQuery(query);
             Map Map = new HashMap();
-            //String file = System.getProperty("user.dir") + "/iReports/relUsuarios.jasper";
+            String file = dir.getCanonicalPath();
+            String arq = "\\iReports\\relUsuarios.jasper";
+            System.out.println(file+arq);
             JRResultSetDataSource relResult = new JRResultSetDataSource(connect.getSt().getResultSet());
-            JasperPrint jpPrint = JasperFillManager.fillReport("iReports/relUsuarios.jasper", new HashMap(), relResult);
+            JasperPrint jpPrint = JasperFillManager.fillReport(file+arq, new HashMap(), relResult);
             JasperViewer jv = new JasperViewer(jpPrint, false);
             jv.setVisible(true);
             jv.toFront();
@@ -49,7 +50,8 @@ public class RelatorioDao {
         return rs;
     }
 
-    public static void relatorioEventos() throws JRException, SQLException {
+    public static void relatorioEventos() throws JRException, SQLException, IOException {
+        File dir = new File(".");
         String query = "select Evento.nomeEvento, Evento.localEvento, Evento.dataEvento, Ingresso.quantidade, "
                         +"Ingresso.precoMor, Ingresso.PrecoVis "
                         +"from Evento, Ingresso "
@@ -59,9 +61,10 @@ public class RelatorioDao {
             Statement st = connect.getSt();
             ResultSet rs = st.executeQuery(query);
             Map Map = new HashMap();
-            //String file = System.getProperty("user.dir") + "file.jasper";
+            String file = dir.getCanonicalPath();
+            String arq = "\\iReports\\relEventos.jasper";
             JRResultSetDataSource relResult = new JRResultSetDataSource(connect.getSt().getResultSet());
-            JasperPrint jpPrint = JasperFillManager.fillReport("iReports/relEventos.jasper", new HashMap(), relResult);
+            JasperPrint jpPrint = JasperFillManager.fillReport(file+arq, new HashMap(), relResult);
             JasperViewer jv = new JasperViewer(jpPrint, false);
             jv.setVisible(true);
             jv.toFront();

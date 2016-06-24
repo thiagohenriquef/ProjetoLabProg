@@ -1,7 +1,6 @@
 package br.com.IngressosJa.Dao;
 
 import br.com.IngressosJa.controller.Autentica;
-import br.com.IngressosJa.model.Visitante;
 import br.com.IngressosJa.persistencia.Conexao;
 import com.mysql.jdbc.Statement;
 import java.sql.*;
